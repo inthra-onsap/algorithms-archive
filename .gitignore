@@ -1,7 +1,5 @@
 # Mac Os Files
 .idea/
 
-# Build Files
-CMakeLists.txt
+# Built Files
 cmake-build-debug/
-main.cpp

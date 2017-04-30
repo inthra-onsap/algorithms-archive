@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.7)
+project(algorithms_archive)
+
+set(CMAKE_CXX_STANDARD 14)
+add_subdirectory(lib/googletest)
+include_directories(lib/googletest/googletest/include)
+include_directories(lib/googletest/googlemock/include)
+
+set(SOURCE_FILES main.cc sorting/selection_sort/selection_sort.cc sorting/selection_sort/selection_sort.h sorting/selection_sort/selection_sort_test.cc)
+add_executable(algorithms_archive ${SOURCE_FILES})
+target_link_libraries(algorithms_archive gtest gtest_main)
+
