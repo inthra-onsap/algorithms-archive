@@ -6,7 +6,7 @@ add_subdirectory(lib/googletest)
 include_directories(lib/googletest/googletest/include)
 include_directories(lib/googletest/googlemock/include)
 
-set(SOURCE_FILES main.cc sorting/selection_sort/selection_sort.cc sorting/selection_sort/selection_sort.h sorting/selection_sort/selection_sort_test.cc)
+set(SOURCE_FILES main.cc sorting/selection_sort/selection_sort.cc sorting/selection_sort/selection_sort.h sorting/selection_sort/selection_sort_test.cc tree/bst/bst_node.cc tree/bst/binary_search_tree.h tree/bst/binary_search_tree_test.cc)
 add_executable(algorithms_archive ${SOURCE_FILES})
 target_link_libraries(algorithms_archive gtest gtest_main)
 

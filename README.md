@@ -1,4 +1,7 @@
 # algorithms-archive
 
-### Sorting
-    * [Selection Sort](https://github.com/inthra-onsap/algorithms-archive/SelectionSort)
+### Sorting Algorithms
+- [Selection Sort]
+
+### Data Structures
+- [Binary Search Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/bst)
