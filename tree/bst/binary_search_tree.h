@@ -22,7 +22,7 @@ class BinarySearchTree {
   }
 
   ~BinarySearchTree() {
-    Clear();
+    Clear(root);
   }
 
   const Comparable &FindMin() const {

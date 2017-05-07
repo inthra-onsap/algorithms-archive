@@ -162,6 +162,5 @@ TEST(BinarySearchTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
   EXPECT_TRUE(new_bst.Contains(5));
   EXPECT_TRUE(new_bst.Contains(7));
 }
-
 } // namespace tree
 } // namespace algorithms_archive

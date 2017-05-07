@@ -1,7 +1,12 @@
 # algorithms-archive
 
-### Sorting Algorithms
+## Algorithms
+####Sorting
+
 - [Selection Sort]
 
-### Data Structures
-- [Binary Search Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/bst)
+## Data Structures
+####Trees
+
+- [Binary Search Tree (Un-balanced Tree)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/bst)
+- [AVL Tree (Balanced Tree)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/avl_tree)
