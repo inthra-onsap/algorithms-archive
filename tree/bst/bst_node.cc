@@ -13,8 +13,10 @@ struct BstNode {
           BstNode<Comparable> *right_child = nullptr)
       : data{element}, left{left_child}, right{right_child} {
   }
-  BstNode(Comparable &&element, BstNode<Comparable> *left_child = nullptr, BstNode<Comparable> *right_child = nullptr)
-      : data{std::move(element)}, left{left_child}, right{right_child} {
+  BstNode(Comparable &&element,
+          BstNode<Comparable> *&&left_child = nullptr,
+          BstNode<Comparable> *&&right_child = nullptr)
+      : data{std::move(element)}, left{std::move(left_child)}, right{std::move(right_child)} {
   }
 };
 } // namespace tree

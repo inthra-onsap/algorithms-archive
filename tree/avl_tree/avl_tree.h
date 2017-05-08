@@ -211,8 +211,8 @@ class AvlTree {
       return nullptr;
     } else {
       return new AvlNode<Comparable>{std::move(node->data),
-                                     Clone(node->left),
-                                     Clone(node->right),
+                                     Clone(std::move(node->left)),
+                                     Clone(std::move(node->right)),
                                      std::move(node->height)};
     }
   }
