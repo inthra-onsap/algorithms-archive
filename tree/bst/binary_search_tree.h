@@ -3,7 +3,6 @@
 
 #include "bst_node.cc"
 
-#include <iostream>
 #include <utility>
 
 namespace algorithms_archive {
