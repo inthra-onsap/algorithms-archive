@@ -95,7 +95,7 @@ class BinarySearchTree {
     } else if (node->left != nullptr && node->right != nullptr) {
       BstNode<Comparable> *min_node = FindMin(node->right);
       node->data = min_node->data;
-      delete min_node;
+      Remove(node->data, node->right);
     } else {
       BstNode<Comparable> *old_node = node;
       node = (node->left != nullptr) ? node->left : node->right;
