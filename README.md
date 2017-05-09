@@ -1,4 +1,4 @@
-# algorithms-archive
+# Algorithms Archive
 
 ## Algorithms
 #### Sorting

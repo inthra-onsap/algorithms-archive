@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-using namespace algorithms_archive::tree;
-
 namespace algorithms_archive {
 namespace tree {
 /**
