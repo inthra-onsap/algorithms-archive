@@ -23,20 +23,20 @@ class RopeString {
     root = Move(std::move(rhs.root));
   }
 
-  ~RopeTree() {
+  ~RopeString() {
     Empty(root);
   }
 
   /**
    * 1-based index
-   * @param int index
+   * @param uint64_t index
    * @return char
    */
-  char Index(const int index) {
+  char Index(const uint64_t index) {
     return Index(index, root);
   }
 
-  void Insert(const int &index, const std::string &text) {
+  void Insert(const uint64_t index, const std::string text) {
     RopeNode *left;
     RopeNode *right;
     Split(index, root, left, right);
@@ -44,17 +44,17 @@ class RopeString {
     root = Merge(Merge(left, new_node), right);
   }
 
-  void Append(std::string &text) {
+  void Append(std::string text) {
     RopeNode *new_node = new RopeNode{text, text.length(), text.length()};
     root = Merge(root, new_node);
   }
 
-  void Prepend(std::string &text) {
+  void Prepend(std::string text) {
     RopeNode *new_node = new RopeNode{text, text.length(), text.length()};
     root = Merge(new_node, root);
   }
 
-  void Delete(const int &start, const int &end) {
+  void Delete(const uint64_t start, const uint64_t end) {
     RopeNode *left;
     RopeNode *middle;
     RopeNode *right;
@@ -82,7 +82,7 @@ class RopeString {
   enum BALANCE_TYPE { LEFT_HEAVY, BALANCE, RIGHT_HEAVY };
   RopeNode *root;
 
-  RopeNode *Clone(RopeNode *node) {
+  RopeNode *Clone(const RopeNode *node) {
     if (node == nullptr) {
       return nullptr;
     } else {
@@ -97,7 +97,7 @@ class RopeString {
     }
   }
 
-  RopeNode *Move(RopeNode *&&node) {
+  RopeNode *Move(const RopeNode *&&node) {
     if (node == nullptr) {
       return nullptr;
     } else {
@@ -112,9 +112,9 @@ class RopeString {
     }
   }
 
-  char Index(const int &index, RopeNode *node) {
+  char Index(const uint64_t &index, RopeNode *node) {
     if (node == nullptr) {
-      return nullptr;
+      return '\0';
     }
     if (index > node->weight) {
       return Index(index - node->weight, node->right);
@@ -165,23 +165,23 @@ class RopeString {
 
   }
 
-  int Height(RopeNode *node) {
+  uint64_t Height(RopeNode *node) {
     return (node != nullptr) ? node->height : 0;
   }
 
-  int Length(RopeNode *node) {
+  uint64_t Length(RopeNode *node) {
     return (node != nullptr) ? node->length : 0;
   }
 
-  int Weight(RopeNode *node) {
+  uint64_t Weight(RopeNode *node) {
     return (node != nullptr) ? node->weight : 0;
   }
 
-  int GetHeight(RopeNode *node) {
+  uint64_t GetHeight(RopeNode *node) {
     return 1 + std::max(Height(node->left), Height(node->right));
   }
 
-  int GetLength(RopeNode *node) {
+  uint64_t GetLength(RopeNode *node) {
     return Length(node->left) + Length(node->right);
   }
 
@@ -224,7 +224,7 @@ class RopeString {
     return Rebalance(new_root);
   }
 
-  void Split(const int index, RopeNode *&node, RopeNode *&left, RopeNode *&right) {
+  void Split(const uint64_t index, RopeNode *&node, RopeNode *&left, RopeNode *&right) {
     if (index > node->weight) {
       left = Merge(left, node->left);
       if (node->right != nullptr) {
@@ -250,7 +250,7 @@ class RopeString {
           right = Merge(node, right);
         } else {
           RopeNode *new_left = new RopeNode{node->data.substr(0, index), index, index};
-          int right_len = node->data.length() - index;
+          uint64_t right_len = node->data.length() - index;
           RopeNode *new_right = new RopeNode{node->data.substr(index), right_len, right_len};
           left = Merge(left, new_left);
           right = Merge(new_right, right);
