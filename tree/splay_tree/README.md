@@ -1,3 +1,3 @@
 # Splay Tree
 
-TBD;
+TBD.

@@ -80,8 +80,8 @@ class SplayTree {
     if (rhs == nullptr) {
       return nullptr;
     } else {
-      SplayTreeNode<Comparable> *left = Clone(std::move(rhs->left));
-      SplayTreeNode<Comparable> *right = Clone(std::move(rhs->right));
+      SplayTreeNode<Comparable> *left = Move(std::move(rhs->left));
+      SplayTreeNode<Comparable> *right = Move(std::move(rhs->right));
       SplayTreeNode<Comparable> *node = new SplayTreeNode<Comparable>(
           std::move(rhs->data), std::move(left), std::move(right));
 
@@ -117,16 +117,36 @@ class SplayTree {
     SplayTreeNode<Comparable> *subtree_root = node->right;
     node->right = subtree_root->left;
     subtree_root->left = node;
+    if (node->parent != nullptr) {
+      if (node->parent->left == node) {
+        node->parent->left = subtree_root;
+      } else {
+        node->parent->right = subtree_root;
+      }
+    }
     subtree_root->parent = node->parent;
     node->parent = subtree_root;
+    if (node->right != nullptr) {
+      node->right->parent = node;
+    }
   }
 
   void RotateRight(SplayTreeNode<Comparable> *node) {
     SplayTreeNode<Comparable> *subtree_root = node->left;
     node->left = subtree_root->right;
     subtree_root->right = node;
+    if (node->parent != nullptr) {
+      if (node->parent->left == node) {
+        node->parent->left = subtree_root;
+      } else {
+        node->parent->right = subtree_root;
+      }
+    }
     subtree_root->parent = node->parent;
     node->parent = subtree_root;
+    if (node->left != nullptr) {
+      node->left->parent = node;
+    }
   }
 
   void Splay(SplayTreeNode<Comparable> *node) {

@@ -1,3 +1,3 @@
 # Binary Search Tree
 
-TBD;
+TBD.
