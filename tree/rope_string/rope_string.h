@@ -37,8 +37,8 @@ class RopeString {
   }
 
   void Insert(const uint64_t index, const std::string text) {
-    RopeNode *left;
-    RopeNode *right;
+    RopeNode *left = nullptr;
+    RopeNode *right = nullptr;
     Split(index, root, left, right);
     RopeNode *new_node = new RopeNode{text, text.length(), text.length()};
     root = Merge(Merge(left, new_node), right);
@@ -54,12 +54,13 @@ class RopeString {
     root = Merge(new_node, root);
   }
 
-  void Delete(const uint64_t start, const uint64_t end) {
-    RopeNode *left;
-    RopeNode *middle;
-    RopeNode *right;
-    Split(start, root, left, middle);
-    Split(end, middle, middle, right);
+  void Delete(const uint64_t start, const uint64_t length) {
+    RopeNode *left = nullptr;
+    RopeNode *middle = nullptr;
+    RopeNode *tmp_right = nullptr;
+    RopeNode *right = nullptr;
+    Split(start, root, left, tmp_right);
+    Split(length + 1, tmp_right, middle, right);
     Empty(middle);
     root = Merge(left, right);
   }
@@ -74,8 +75,9 @@ class RopeString {
     return result;
   }
 
-  void Concat(const RopeString &tree) {
+  void Concat(RopeString &tree) {
     root = Merge(root, tree.root);
+    tree.root = nullptr;
   }
 
  private:
@@ -155,14 +157,14 @@ class RopeString {
     if (node == nullptr) {
       return BALANCE;
     }
-    if (Height(node->right) - Height(node->left) > 1) {
+    int balance_constant = Height(node->right) - Height(node->left);
+    if (balance_constant > 1) {
       return RIGHT_HEAVY;
-    } else if (Height(node->right) - Height(node->left) < -1) {
+    } else if (balance_constant < -1) {
       return LEFT_HEAVY;
     } else {
       return BALANCE;
     }
-
   }
 
   uint64_t Height(RopeNode *node) {
@@ -225,6 +227,9 @@ class RopeString {
   }
 
   void Split(const uint64_t index, RopeNode *&node, RopeNode *&left, RopeNode *&right) {
+    if (node == nullptr) {
+      return;
+    }
     if (index > node->weight) {
       left = Merge(left, node->left);
       if (node->right != nullptr) {
@@ -240,22 +245,15 @@ class RopeString {
         delete node;
       } else {
         /**
-         * If the index is the last position of string then merge it to left tree
-         * If the index is the first position of string then merge it to right tree
-         * Otherwise split to 2 nodes then merge them to left and right trees.
+         * Split into 2 nodes then merge them to left and right trees.
          */
-        if (index == node->weight) {
-          left = Merge(left, node);
-        } else if (index == 1) {
-          right = Merge(node, right);
-        } else {
-          RopeNode *new_left = new RopeNode{node->data.substr(0, index), index, index};
-          uint64_t right_len = node->data.length() - index;
-          RopeNode *new_right = new RopeNode{node->data.substr(index), right_len, right_len};
-          left = Merge(left, new_left);
-          right = Merge(new_right, right);
-          delete node;
-        }
+        uint64_t left_len = index - 1;
+        uint64_t right_len = node->data.length() - left_len;
+        RopeNode *new_left = new RopeNode{node->data.substr(0, left_len), left_len, left_len};
+        RopeNode *new_right = new RopeNode{node->data.substr(left_len), right_len, right_len};
+        left = Merge(left, new_left);
+        right = Merge(new_right, right);
+        delete node;
       }
     }
   }

@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //::testing::GTEST_FLAG(filter) = "BinarySearchTreeTest.ExpectMoveAllElementsFromTreeSuccess";
+  //::testing::GTEST_FLAG(filter) = "RopeStringTest.ExpectRopeStringDeleteLastPartSuccess";
   return RUN_ALL_TESTS();
 }

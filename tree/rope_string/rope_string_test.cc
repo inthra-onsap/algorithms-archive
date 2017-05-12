@@ -1,11 +1,13 @@
 #include "rope_string.h"
 
+#include <string>
+
 #include <gtest/gtest.h>
 
 namespace algorithms_archive {
 namespace tree {
 /**
- * ToString() tests
+ * ToString() Tests
  */
 TEST(RopeStringTest, ExpectRopeStringIsEmpty) {
   RopeString str;
@@ -13,7 +15,7 @@ TEST(RopeStringTest, ExpectRopeStringIsEmpty) {
 }
 
 /**
- * Append() tests
+ * Append() Tests
  */
 TEST(RopeStringTest, ExpectRopeStringAppendSuccess) {
   RopeString str;
@@ -23,7 +25,7 @@ TEST(RopeStringTest, ExpectRopeStringAppendSuccess) {
 }
 
 /**
- * Prepend() tests
+ * Prepend() Tests
  */
 TEST(RopeStringTest, ExpectRopeStringPrependSuccess) {
   RopeString str;
@@ -33,7 +35,7 @@ TEST(RopeStringTest, ExpectRopeStringPrependSuccess) {
 }
 
 /**
- * Empty() tests
+ * Empty() Tests
  */
 TEST(RopeStringTest, ExpectRopeStringEmptySuccess) {
   RopeString str;
@@ -43,19 +45,19 @@ TEST(RopeStringTest, ExpectRopeStringEmptySuccess) {
 }
 
 /**
- * Concat() tests
+ * Concat() Tests
  */
-//TEST(RopeStringTest, ExpectRopeStringConcatSuccess){
-//  RopeString str1;
-//  RopeString str2;
-//  str1.Prepend("str1 ");
-//  str2.Prepend("str2");
-//  str1.Concat(str2);
-//  EXPECT_EQ("str1 str2", str1.ToString());
-//}
+TEST(RopeStringTest, ExpectRopeStringConcatSuccess) {
+  RopeString str1;
+  RopeString str2;
+  str1.Append("str1 ");
+  str2.Append("str2");
+  str1.Concat(str2);
+  EXPECT_EQ("str1 str2", str1.ToString());
+}
 
 /**
- * Index() tests
+ * Index() Tests
  */
 TEST(RopeStringTest, ExpectRopeStringReturn1thCharSuccess) {
   RopeString str;
@@ -74,46 +76,46 @@ TEST(RopeStringTest, ExpectRopeStringReturnNullCharSuccess) {
 }
 
 /**
- * Delete() tests
+ * Delete() Tests
  */
-//TEST(RopeStringTest, ExpectRopeStringDeleteSuccess) {
-//  RopeString str;
-//  str.Prepend("character");
-//  str.Delete(3,5);
-//  EXPECT_EQ("chacter", str.ToString());
-//}
-//TEST(RopeStringTest, ExpectRopeStringDeleteFirstPartSuccess) {
-//  RopeString str;
-//  str.Prepend("character");
-//  str.Delete(1,3);
-//  EXPECT_EQ("racter", str.ToString());
-//}
-//TEST(RopeStringTest, ExpectRopeStringDeleteLastPartSuccess) {
-//  RopeString str;
-//  str.Prepend("character");
-//  str.Delete(8,9);
-//  EXPECT_EQ("charact", str.ToString());
-//}
+TEST(RopeStringTest, ExpectRopeStringDeleteSuccess) {
+  RopeString str;
+  str.Append("character");
+  str.Delete(3,2);
+  EXPECT_EQ("chacter", str.ToString());
+}
+TEST(RopeStringTest, ExpectRopeStringDeleteFirstPartSuccess) {
+  RopeString str;
+  str.Append("character");
+  str.Delete(1,3);
+  EXPECT_EQ("racter", str.ToString());
+}
+TEST(RopeStringTest, ExpectRopeStringDeleteLastPartSuccess) {
+  RopeString str;
+  str.Append("character");
+  str.Delete(8,50);
+  EXPECT_EQ("charact", str.ToString());
+}
 
 /**
- * Insert() tests
+ * Insert() Tests
  */
-//TEST(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
-//  RopeString str;
-//  str.Insert(0, "insertion");
-//  EXPECT_EQ("insertion", str.ToString());
-//}
-//TEST(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
-//  RopeString str;
-//  str.Insert(5, "insertion");
-//  EXPECT_EQ("insertion", str.ToString());
-//}
-//TEST(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
-//  RopeString str;
-//  str.Insert(0, "insertion");
-//  str.Insert(3, " middle ");
-//  EXPECT_EQ("in middle sertion", str.ToString());
-//}
+TEST(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
+  RopeString str;
+  str.Insert(0, "insertion");
+  EXPECT_EQ("insertion", str.ToString());
+}
+TEST(RopeStringTest, ExpectRopeStringInsertStringAnyPositionSuccess) {
+  RopeString str;
+  str.Insert(5, "insertion");
+  EXPECT_EQ("insertion", str.ToString());
+}
+TEST(RopeStringTest, ExpectRopeStringInsertStringAt3rdPositionSuccess) {
+  RopeString str;
+  str.Insert(0, "insertion");
+  str.Insert(3, " middle ");
+  EXPECT_EQ("in middle sertion", str.ToString());
+}
 
 /**
  * Copy Constructor & Move Constructor Tests
