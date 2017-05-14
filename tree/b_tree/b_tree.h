@@ -10,14 +10,10 @@ namespace tree {
 template<typename Comparable>
 class BTree {
  public:
-
   BTree(int min_degree_) : root{nullptr}, min_degree{min_degree_} {
   }
 
   BTree(BTree &rhs) {
-  }
-
-  BTree(BTree &&rhs) {
   }
 
   ~BTree() {
@@ -28,16 +24,16 @@ class BTree {
     Insert(value, root);
   }
 
-  void Insert(Comparable &&value) {
-
-  }
-
   bool IsEmpty() {
-    return root == nullptr;
+    return (root == nullptr);
   }
 
   bool Contain(const Comparable &value) {
     return Contain(value, root);
+  }
+
+  void Remove(const Comparable &value) {
+    Remove(value, root);
   }
 
   void Clear() {
@@ -101,7 +97,6 @@ class BTree {
       node = new BTreeNode<Comparable>{value, min_degree, true};
       return;
     }
-
     if (node->IsFull()) {
       BTreeNode<Comparable> *new_root = new BTreeNode<Comparable>(min_degree, false);
       new_root->AddChildAt(0, node);
@@ -123,6 +118,51 @@ class BTree {
         }
         Insert(value, next_child);
       }
+    }
+  }
+
+  void Remove(const Comparable &value, BTreeNode<Comparable> *&node) {
+    if (node == nullptr) {
+      return;
+    }
+    int key_index = node->HasKey(value);
+    if (node->IsLeaf()) {
+      if (key_index != -1) {
+        node->RemoveAt(key_index);
+      }
+    } else if (!node->IsLeaf() && key_index != -1) {
+      if (!node->p_children[key_index]->IsMinimumNode()) {
+        // Case 1) Find predecessor from child node
+        Comparable predecessor = node->GetPredecessor(key_index);
+        node->UpdateKeyAt(key_index, predecessor);
+        Remove(predecessor, node->GetRefChildAt(key_index));
+      } else if (!node->p_children[key_index + 1]->IsMinimumNode()) {
+        // Case 2) Find successor from next-child node
+        Comparable successor = node->GetSuccessor(key_index + 1);
+        node->UpdateKeyAt(key_index, successor);
+        Remove(successor, node->GetRefChildAt(key_index + 1));
+      } else {
+        // Case 3) Merge child and next-child together
+        node->MergeChildAt(key_index);
+        Remove(value, node->GetRefChildAt(key_index));
+      }
+    } else {
+      int next_pindex = node->NextIndex(value);
+      BTreeNode *next_child = node->GetChildAt(next_pindex);
+      bool merge_from_left = (next_pindex == 0) ? true : false;
+      int prev_num_keys = node->num_of_keys;
+      if (next_child->IsMinimumNode()) {
+        /**
+        * MakeChildAtNotMinimum()
+        * Case 1) Rotate child value from sibling left or right
+        * Case 2) Merge child and left/right child together
+        */
+        node->MakeChildAtNotMinimum(next_pindex);
+        if (!merge_from_left && prev_num_keys > node->num_of_keys) {
+          next_child = node->GetRefChildAt(next_pindex - 1);
+        }
+      }
+      Remove(value, next_child);
     }
   }
 };
