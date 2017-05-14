@@ -27,6 +27,14 @@ struct BTreeNode {
     p_children = new BTreeNode<Comparable> *[2 * min_degree_]{nullptr};
   }
 
+  void CloneKeys(BTreeNode<Comparable> *node) {
+    for (int i = 0; i < node->num_of_keys; ++i) {
+      keys[i] = node->keys[i];
+    }
+    num_of_keys = node->num_of_keys;
+    key_size = node->key_size;
+  }
+
   bool IsFull() {
     return (num_of_keys == key_size);
   }

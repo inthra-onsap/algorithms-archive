@@ -14,6 +14,8 @@ class BTree {
   }
 
   BTree(BTree &rhs) {
+    min_degree = rhs.min_degree;
+    root = Clone(rhs.root);
   }
 
   ~BTree() {
@@ -49,6 +51,19 @@ class BTree {
  private:
   BTreeNode<Comparable> *root;
   int min_degree;
+
+  BTreeNode<Comparable> *Clone(BTreeNode<Comparable> *node) {
+    if (node == nullptr) {
+      return nullptr;
+    } else {
+      BTreeNode<Comparable> *new_node = new BTreeNode<Comparable>{node->min_degree, node->is_leaf};
+      new_node->CloneKeys(node);
+      for (int i = 0; i <= node->num_of_keys; ++i) {
+        new_node->AddChildAt(i, Clone(node->GetChildAt(i)));
+      }
+      return new_node;
+    }
+  }
 
   bool Contain(const Comparable &value, BTreeNode<Comparable> *node) {
     if (node == nullptr) {
@@ -148,7 +163,7 @@ class BTree {
       }
     } else {
       int next_pindex = node->NextIndex(value);
-      BTreeNode *next_child = node->GetChildAt(next_pindex);
+      BTreeNode<Comparable> *next_child = node->GetChildAt(next_pindex);
       bool merge_from_left = (next_pindex == 0) ? true : false;
       int prev_num_keys = node->num_of_keys;
       if (next_child->IsMinimumNode()) {
