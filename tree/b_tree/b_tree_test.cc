@@ -262,5 +262,39 @@ TEST_F(BTreeTest, ExpectRemoveElementFromNonLeafByMergingSuccess) {
   EXPECT_EQ(20, root->keys[0]);
   EXPECT_EQ(60, root->keys[1]);
 }
+
+// ToString() Tests
+TEST_F(BTreeTest, ExpectGetNumbersInAscOrderSuccess){
+  BTree<int> b_tree{2};
+  b_tree.Insert(10);
+  b_tree.Insert(20);
+  b_tree.Insert(30);
+  b_tree.Insert(40);
+  b_tree.Insert(50);
+  b_tree.Insert(60);
+  b_tree.Insert(70);
+  b_tree.Insert(80);
+  b_tree.Insert(90);
+  EXPECT_EQ("102030405060708090", b_tree.ToString());
+}
+
+// Clear() Tests
+TEST_F(BTreeTest, ExpectClearNumberSuccess){
+  BTree<int> b_tree{2};
+  b_tree.Insert(10);
+  b_tree.Insert(20);
+  b_tree.Clear();
+  EXPECT_EQ("", b_tree.ToString());
+}
+
+// Copy Constructor
+TEST_F(BTreeTest, ExpectCopyBTreeSuccess){
+  BTree<int> b_tree{2};
+  b_tree.Insert(10);
+  b_tree.Insert(20);
+  BTree<int> new_btree = b_tree;
+  EXPECT_EQ("1020", new_btree.ToString());
+}
+
 } // namespace tree
 } // namespace algorithms_archive
