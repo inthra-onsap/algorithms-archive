@@ -48,14 +48,14 @@ struct BTreeNode {
   }
 
   int HasKey(const Comparable &value) {
-    int i = num_of_keys;
-    while ((i - 1) >= 0 && value < keys[i - 1]) {
+    int i = num_of_keys - 1;
+    while (i > 0 && value < keys[i]) {
       --i;
     }
     return (keys[i] == value) ? i : -1;
   }
 
-  void AddKey(Comparable &value) {
+  void AddKey(Comparable value) {
     int i = num_of_keys;
     while ((i - 1) >= 0 && value < keys[i - 1]) {
       std::swap(keys[i - 1], keys[i]);
@@ -98,13 +98,15 @@ struct BTreeNode {
     BTreeNode<Comparable> *new_sibling = new BTreeNode<Comparable>{child->min_degree, child->is_leaf};
 
     // Move half of keys and pointers to new sibling
-    for (int i = 0; i < child->min_degree; ++i) {
-      if (i < (child->min_degree - 1)) {
-        new_sibling->AddKey(child[child->min_degree + i]);
-        child->num_of_keys -= 1;
+    for (int i = 0; i < (child->min_degree - 1); ++i) {
+      new_sibling->AddKey(child->keys[child->min_degree + i]);
+      child->num_of_keys -= 1;
+    }
+    if (!child->IsLeaf()) {
+      for (int i = 0; i <= child->min_degree; ++i) {
+        new_sibling->p_children[i] = child->p_children[child->min_degree + i];
+        child->p_children[child->min_degree + i] = nullptr;
       }
-      new_sibling->p_children[i] = child->p_children[child->min_degree + i];
-      child->p_children[child->min_degree + i] = nullptr;
     }
 
     // Adjust and move the splited key and pointer to parent
@@ -112,7 +114,7 @@ struct BTreeNode {
       p_children[i + 1] = p_children[i];
     }
     AddChildAt(index + 1, new_sibling);
-    AddKey(child->keys[min_degree - 1]);
+    AddKey(child->keys[child->min_degree - 1]);
     child->num_of_keys -= 1;
   }
 

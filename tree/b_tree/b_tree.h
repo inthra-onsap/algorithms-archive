@@ -22,7 +22,7 @@ class BTree {
     Clear(root);
   }
 
-  void Insert(Comparable &value) {
+  void Insert(Comparable value) {
     Insert(value, root);
   }
 
@@ -30,11 +30,11 @@ class BTree {
     return (root == nullptr);
   }
 
-  bool Contain(const Comparable &value) {
+  bool Contain(const Comparable value) {
     return Contain(value, root);
   }
 
-  void Remove(const Comparable &value) {
+  void Remove(const Comparable value) {
     Remove(value, root);
   }
 
@@ -69,16 +69,12 @@ class BTree {
     if (node == nullptr) {
       return false;
     }
-    int i = 0;
-    while (value > node->keys[i] && i < node->num_of_keys) {
-      ++i;
-    }
-    if (node->keys[i] == value) {
+    if (node->HasKey(value) != -1) {
       return true;
-    } else if (node->is_leaf) {
+    } else if (node->IsLeaf()) {
       return false;
     } else {
-      Contain(value, node->p_children[i]);
+      return Contain(value, node->GetChildAt(node->NextIndex(value)));
     }
   }
 
@@ -157,29 +153,37 @@ class BTree {
         node->UpdateKeyAt(key_index, successor);
         Remove(successor, node->GetRefChildAt(key_index + 1));
       } else {
-        // Case 3) Merge child and next-child together
+        // Case 3) Merge child and next-sibling together
         node->MergeChildAt(key_index);
         Remove(value, node->GetRefChildAt(key_index));
       }
     } else {
       int next_pindex = node->NextIndex(value);
       BTreeNode<Comparable> *next_child = node->GetChildAt(next_pindex);
-      bool merge_from_left = (next_pindex == 0) ? true : false;
+      bool merge_from_right = (next_pindex == 0) ? true : false;
       int prev_num_keys = node->num_of_keys;
       if (next_child->IsMinimumNode()) {
         /**
         * MakeChildAtNotMinimum()
         * Case 1) Rotate child value from sibling left or right
-        * Case 2) Merge child and left/right child together
+        * Case 2) Merge child and left/right sibling together
         */
         node->MakeChildAtNotMinimum(next_pindex);
-        if (!merge_from_left && prev_num_keys > node->num_of_keys) {
+        if (!merge_from_right && prev_num_keys > node->num_of_keys) {
           next_child = node->GetRefChildAt(next_pindex - 1);
         }
       }
       Remove(value, next_child);
     }
   }
+
+// [ONLY] Test Purposes
+#ifdef UNIT_TESTS_
+  friend class BTreeTest_ExpectInsert5ElementsToRootSuccess_Test;
+  friend class BTreeTest_ExpectInsertElementsAndBuildNewRootSuccess_Test;
+  friend class BTreeTest_ExpectInsertElementsToChildWithoutSplitChildSuccess_Test;
+  friend class BTreeTest_ExpectInsertElementsToChildWithSplitChildSuccess_Test;
+#endif // UNIT_TESTS_
 };
 } // namespace tree
 } // namespace algorithms_archive
