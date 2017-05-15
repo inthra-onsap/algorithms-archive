@@ -190,8 +190,77 @@ TEST_F(BTreeTest, ExpectInsertElementsToChildWithSplitChildSuccess) {
 }
 
 /**
- * Remove() & ToString() Tests
+ * Remove() Tests
  */
+TEST_F(BTreeTest, ExpectRemoveElementFromLeafSuccess) {
+  BTree<int> b_tree{3};
+  b_tree.Insert(10);
+  // Expect root as following
+  BTreeNode<int> *root = b_tree.root;
+  EXPECT_EQ(1, root->num_of_keys);
+  b_tree.Remove(10);
+  EXPECT_EQ(0, root->num_of_keys);
+}
 
+TEST_F(BTreeTest, ExpectRemoveElementFromNonLeafByPredecessorAndLeafByBorrowLeftSuccess) {
+  BTree<int> b_tree{2};
+  b_tree.Insert(11);
+  b_tree.Insert(12);
+  b_tree.Insert(13);
+  b_tree.Insert(14);
+  b_tree.Insert(15);
+  b_tree.Insert(16);
+  b_tree.Insert(17);
+  b_tree.Insert(18);
+  b_tree.Insert(8);
+  b_tree.Insert(9);
+  b_tree.Insert(10);
+  // Expect root as following
+  BTreeNode<int> *root = b_tree.root;
+  EXPECT_EQ(14, root->keys[0]);
+  b_tree.Remove(14);
+  EXPECT_EQ(13, root->keys[0]);
+}
+
+TEST_F(BTreeTest, ExpectRemoveElementFromNonLeafBySuccessorAndLeafByBorrowRightSuccess) {
+  BTree<int> b_tree{2};
+  b_tree.Insert(10);
+  b_tree.Insert(20);
+  b_tree.Insert(30);
+  b_tree.Insert(40);
+  b_tree.Insert(50);
+  b_tree.Insert(60);
+  b_tree.Insert(70);
+  b_tree.Insert(80);
+  b_tree.Insert(90);
+  b_tree.Insert(100);
+  b_tree.Insert(75);
+  // Expect root as following
+  BTreeNode<int> *root = b_tree.root;
+  EXPECT_EQ(40, root->keys[0]);
+  b_tree.Remove(40);
+  EXPECT_EQ(50, root->keys[0]);
+}
+
+TEST_F(BTreeTest, ExpectRemoveElementFromNonLeafByMergingSuccess) {
+  BTree<int> b_tree{2};
+  b_tree.Insert(10);
+  b_tree.Insert(20);
+  b_tree.Insert(30);
+  b_tree.Insert(40);
+  b_tree.Insert(50);
+  b_tree.Insert(60);
+  b_tree.Insert(70);
+  b_tree.Insert(80);
+  b_tree.Insert(90);
+  // Expect root as following
+  BTreeNode<int> *root = b_tree.root;
+  EXPECT_EQ(40, root->keys[0]);
+  b_tree.Remove(40);
+  // Get new root
+  root = b_tree.root;
+  EXPECT_EQ(20, root->keys[0]);
+  EXPECT_EQ(60, root->keys[1]);
+}
 } // namespace tree
 } // namespace algorithms_archive

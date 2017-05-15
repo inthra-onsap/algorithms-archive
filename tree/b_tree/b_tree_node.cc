@@ -73,7 +73,7 @@ struct BTreeNode {
     return keys[index];
   }
 
-  void AddChildAt(const int &p_index, BTreeNode<Comparable> *node) {
+  void AddChildAt(const int p_index, BTreeNode<Comparable> *node) {
     p_children[p_index] = node;
   }
 
@@ -103,7 +103,7 @@ struct BTreeNode {
       child->num_of_keys -= 1;
     }
     if (!child->IsLeaf()) {
-      for (int i = 0; i <= child->min_degree; ++i) {
+      for (int i = 0; i < child->min_degree; ++i) {
         new_sibling->p_children[i] = child->p_children[child->min_degree + i];
         child->p_children[child->min_degree + i] = nullptr;
       }
@@ -123,6 +123,7 @@ struct BTreeNode {
     BTreeNode<Comparable> *sibling = p_children[p_index + 1];
     // Move the merged key of child and sibling downward
     child->keys[min_degree - 1] = keys[p_index];
+    child->num_of_keys += 1;
     for (int i = (p_index + 1); i < num_of_keys; ++i) {
       keys[i - 1] = keys[i];
     }
@@ -130,14 +131,14 @@ struct BTreeNode {
       p_children[i - 1] = p_children[i];
     }
     num_of_keys -= 1;
-    // Move sibling data to node
+    // Move sibling data to child
     for (int i = 0; i < sibling->num_of_keys; ++i) {
-      child->keys[i + min_degree] = sibling->keys[i];
+      child->keys[i + child->min_degree] = sibling->keys[i];
       ++child->num_of_keys;
     }
     if (!sibling->IsLeaf()) {
       for (int i = 0; i <= sibling->num_of_keys; ++i) {
-        child->p_children[i + min_degree] = sibling->p_children[i];
+        child->p_children[i + child->min_degree] = sibling->p_children[i];
       }
     }
     delete sibling;
@@ -147,7 +148,7 @@ struct BTreeNode {
     BTreeNode<Comparable> *child = p_children[p_index];
     BTreeNode<Comparable> *left_sibling = p_children[p_index - 1];
     // Move child keys & pointers one position ahead
-    for (int i = child->num_of_keys; i >= 0; --i) {
+    for (int i = child->num_of_keys; i > 0; --i) {
       child->keys[i] = child->keys[i - 1];
     }
     if (!child->IsLeaf()) {

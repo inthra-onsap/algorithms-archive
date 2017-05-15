@@ -103,17 +103,17 @@ class BTree {
     }
   }
 
-  void Insert(Comparable &value, BTreeNode<Comparable> *&node) {
+  void Insert(const Comparable &value, BTreeNode<Comparable> *node) {
     if (node == nullptr) {
-      node = new BTreeNode<Comparable>{value, min_degree, true};
+      root = new BTreeNode<Comparable>{value, min_degree, true};
       return;
     }
     if (node->IsFull()) {
       BTreeNode<Comparable> *new_root = new BTreeNode<Comparable>(min_degree, false);
       new_root->AddChildAt(0, node);
       new_root->SplitChildAt(0);
-      Insert(value, new_root);
-      node = new_root;
+      root = new_root;
+      Insert(value, root->GetChildAt(root->NextIndex(value)));
     } else {
       if (node->IsLeaf()) {
         node->AddKey(value);
@@ -155,19 +155,27 @@ class BTree {
       } else {
         // Case 3) Merge child and next-sibling together
         node->MergeChildAt(key_index);
-        Remove(value, node->GetRefChildAt(key_index));
+        if (node->num_of_keys == 0 && root == node) {
+          // If the current is root and no data then delete it
+          BTreeNode<Comparable>* tmp = node;
+          node = node->GetChildAt(key_index);
+          delete tmp;
+          Remove(value, node);
+        }else{
+          Remove(value, node->GetRefChildAt(key_index));
+        }
       }
     } else {
       int next_pindex = node->NextIndex(value);
       BTreeNode<Comparable> *next_child = node->GetChildAt(next_pindex);
-      bool merge_from_right = (next_pindex == 0) ? true : false;
-      int prev_num_keys = node->num_of_keys;
       if (next_child->IsMinimumNode()) {
         /**
         * MakeChildAtNotMinimum()
         * Case 1) Rotate child value from sibling left or right
         * Case 2) Merge child and left/right sibling together
         */
+        bool merge_from_right = (next_pindex == 0) ? true : false;
+        int prev_num_keys = node->num_of_keys;
         node->MakeChildAtNotMinimum(next_pindex);
         if (!merge_from_right && prev_num_keys > node->num_of_keys) {
           next_child = node->GetRefChildAt(next_pindex - 1);
@@ -183,6 +191,10 @@ class BTree {
   friend class BTreeTest_ExpectInsertElementsAndBuildNewRootSuccess_Test;
   friend class BTreeTest_ExpectInsertElementsToChildWithoutSplitChildSuccess_Test;
   friend class BTreeTest_ExpectInsertElementsToChildWithSplitChildSuccess_Test;
+  friend class BTreeTest_ExpectRemoveElementFromLeafSuccess_Test;
+  friend class BTreeTest_ExpectRemoveElementFromNonLeafByPredecessorAndLeafByBorrowLeftSuccess_Test;
+  friend class BTreeTest_ExpectRemoveElementFromNonLeafBySuccessorAndLeafByBorrowRightSuccess_Test;
+  friend class BTreeTest_ExpectRemoveElementFromNonLeafByMergingSuccess_Test;
 #endif // UNIT_TESTS_
 };
 } // namespace tree
