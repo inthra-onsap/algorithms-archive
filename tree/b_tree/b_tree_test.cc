@@ -287,7 +287,7 @@ TEST_F(BTreeTest, ExpectClearNumberSuccess){
   EXPECT_EQ("", b_tree.ToString());
 }
 
-// Copy Constructor
+// Copy Constructor Tests
 TEST_F(BTreeTest, ExpectCopyBTreeSuccess){
   BTree<int> b_tree{2};
   b_tree.Insert(10);

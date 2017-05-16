@@ -3,10 +3,9 @@
 
 namespace algorithms_archive {
 namespace sorting {
+template<typename Comparable>
 class SelectionSort {
  public:
-
- private:
 
 };
 } // namespace sorting
