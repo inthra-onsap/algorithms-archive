@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "BTreeTest.ExpectRemoveElementFromNonLeafByMergingSuccess";
+  //testing::GTEST_FLAG(filter) = "BinaryHeapTest.*";
   return RUN_ALL_TESTS();
 }
