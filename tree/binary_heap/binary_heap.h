@@ -90,7 +90,7 @@ class BinaryHeap {
     }
   }
 
-  // [ONLY] Test Purposes
+// [ONLY] Test Purposes
 #ifdef UNIT_TESTS_
   friend class BinaryHeapTest_ExpectInsertElementsExceedTheSizeSuccess_Test;
 #endif // UNIT_TESTS_

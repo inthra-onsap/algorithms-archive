@@ -20,7 +20,4 @@
 - [Splay Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/splay_tree)
 - [B-Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/b_tree)
 - [Binary Heap (Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_heap)
-
-
-
-
+- [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)

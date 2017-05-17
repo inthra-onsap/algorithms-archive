@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "BinaryHeapTest.*";
+  //testing::GTEST_FLAG(filter) = "LeftistHeapTest.ExpectDeleteMinSuccess";
   return RUN_ALL_TESTS();
 }
