@@ -76,7 +76,7 @@ class LeftistHeap {
     } else {
       return new LeftistHeapNode<Comparable>{std::move(node->data),
                                              Move(std::move(node->left)),
-                                             Clone(std::move(node->right)),
+                                             Move(std::move(node->right)),
                                              node->npl};
     }
   }
