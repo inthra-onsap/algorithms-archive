@@ -84,5 +84,34 @@ TEST_F(LeftistHeapTest, ExpectMergeSameHeapSuccess) {
   EXPECT_TRUE(heap.IsEmpty());
 }
 
+/**
+ * Copy Constructor and Move Constructor Tests
+ */
+TEST_F(LeftistHeapTest, ExpectCopyHeapSuccess) {
+  LeftistHeap<int> heap1;
+  heap1.Insert(5);
+  heap1.Insert(1);
+  LeftistHeap<int> heap2 = heap1;
+
+  EXPECT_EQ(1, heap2.FindMin());
+  heap2.DeleteMin();
+  EXPECT_EQ(5, heap2.FindMin());
+  heap2.DeleteMin();
+  EXPECT_TRUE(heap2.IsEmpty());
+}
+
+TEST_F(LeftistHeapTest, ExpectMoveHeapSuccess) {
+  LeftistHeap<int> heap1;
+  heap1.Insert(5);
+  heap1.Insert(1);
+  LeftistHeap<int> heap2 = std::move(heap1);
+
+  EXPECT_EQ(1, heap2.FindMin());
+  heap2.DeleteMin();
+  EXPECT_EQ(5, heap2.FindMin());
+  heap2.DeleteMin();
+  EXPECT_TRUE(heap2.IsEmpty());
+}
+
 } // namespace tree
 } // namespace algorithms_archive
