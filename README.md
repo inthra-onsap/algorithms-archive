@@ -7,8 +7,8 @@
 - [Selection Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/selection_sort)
 - [Merge Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/merge_sort)
 - [Quick Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/quick_sort)
-- [Bucket Sort]
-- [Radix Sort]
+- [Bucket Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bucket_sort)
+- [Radix Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/radix_sort)
 
 ## Data Structures
 
