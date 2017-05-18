@@ -6,6 +6,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <cmath>
 
 namespace algorithms_archive {
 namespace tree {
@@ -14,7 +15,7 @@ class BinomialTree {
  public:
   BinomialTree() : number_of_nodes{0} {}
 
-  BinomialTree(const BinomialTree &rhs) {
+  BinomialTree(const BinomialTree<Comparable> &rhs) {
     tree.resize(rhs.tree.size());
     number_of_nodes = rhs.number_of_nodes;
     for (int i = 0; i < rhs.tree.size(); ++i) {
@@ -22,7 +23,7 @@ class BinomialTree {
     }
   }
 
-  BinomialTree(BinomialTree &&rhs) {
+  BinomialTree(BinomialTree<Comparable> &&rhs) {
     tree.resize(rhs.tree.size());
     number_of_nodes = std::move(rhs.number_of_nodes);
     for (int i = 0; i < rhs.tree.size(); ++i) {
@@ -76,7 +77,7 @@ class BinomialTree {
     delete deleted_node;
 
     BinomialTree<Comparable> new_tree;
-    new_tree.tree.resize(min_index + 1);
+    new_tree.tree.resize(min_index);
     new_tree.number_of_nodes = (1 << min_index) - 1;
     for (int i = (min_index - 1); i >= 0; --i) {
       new_tree.tree[i] = deleted_child;
@@ -88,13 +89,13 @@ class BinomialTree {
     Merge(new_tree);
   }
 
-  void Merge(BinomialTree &rhs) {
+  void Merge(BinomialTree<Comparable> &rhs) {
     if (this == &rhs) {
       return;
     }
     number_of_nodes += rhs.number_of_nodes;
-    if (tree.size() <= rhs.tree.size()) {
-      uint64_t new_size = std::max(tree.size(), rhs.tree.size()) + 1;
+    if (tree.size() <= RequiredCapacity()) {
+      uint64_t new_size = RequiredCapacity() + 1;
       tree.resize(new_size, nullptr);
     }
     BinomialHeapNode<Comparable> *prev_heap = nullptr;
@@ -106,21 +107,28 @@ class BinomialTree {
       case_index += (prev_heap == nullptr) ? 0 : 4;
       switch (case_index) {
         case 0:
-        case 1:break;
-        case 2:tree[i] = heap2;
+        case 1:
           break;
-        case 3:prev_heap = Link(heap1, heap2);
+        case 2:
+          tree[i] = heap2;
+          break;
+        case 3:
+          prev_heap = Link(heap1, heap2);
           tree[i] = nullptr;
           break;
-        case 4:tree[i] = prev_heap;
+        case 4:
+          tree[i] = prev_heap;
           prev_heap = nullptr;
           break;
-        case 5:prev_heap = Link(heap1, prev_heap);
+        case 5:
+          prev_heap = Link(heap1, prev_heap);
           tree[i] = nullptr;
           break;
-        case 6:prev_heap = Link(heap2, prev_heap);
+        case 6:
+          prev_heap = Link(heap2, prev_heap);
           break;
-        case 7:tree[i] = prev_heap;
+        case 7:
+          tree[i] = prev_heap;
           prev_heap = Link(heap1, heap2);
           break;
       }
@@ -184,6 +192,10 @@ class BinomialTree {
     Empty(node->child);
     delete node;
     node = nullptr;
+  }
+
+  uint64_t RequiredCapacity() {
+    return (number_of_nodes == 0) ? 0 : std::log2(number_of_nodes);
   }
 };
 } // namespace tree

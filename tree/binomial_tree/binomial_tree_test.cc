@@ -53,7 +53,41 @@ TEST_F(BinomialHeapTest, ExpectDeleteMinSuccess) {
 /**
  * Merge() Tests
  */
+TEST_F(BinomialHeapTest, ExpectMergeTreeSuccess) {
+  BinomialTree<int> binomial_tree1;
+  BinomialTree<int> binomial_tree2;
+  binomial_tree1.Insert(1);
+  binomial_tree1.Insert(2);
+  binomial_tree1.Insert(3);
+  binomial_tree2.Insert(10);
+  binomial_tree2.Insert(11);
+  binomial_tree2.Insert(12);
+  binomial_tree2.Insert(13);
+  binomial_tree2.Insert(14);
+  binomial_tree2.Insert(15);
+  binomial_tree1.Merge(binomial_tree2);
 
+  EXPECT_TRUE(binomial_tree2.IsEmpty());
+  EXPECT_EQ(1, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(2, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(3, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(10, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(11, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(12, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(13, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(14, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_EQ(15, binomial_tree1.FindMin());
+  binomial_tree1.DeleteMin();
+  EXPECT_TRUE(binomial_tree1.IsEmpty());
+}
 
 /**
  * Copy Constructor & Move Constructor Tests
