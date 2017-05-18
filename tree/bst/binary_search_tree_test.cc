@@ -4,15 +4,20 @@
 
 namespace algorithms_archive {
 namespace tree {
+class BinarySearchTreeTest : public testing::Test {
+  virtual void SetUp() {}
+
+  virtual void TearDown() {}
+};
 /**
  * IsEmpty() Tests
  */
-TEST(BinarySearchTreeTest, ExpectTreeIsEmpty) {
+TEST_F(BinarySearchTreeTest, ExpectTreeIsEmpty) {
   BinarySearchTree<int> bst;
   EXPECT_TRUE(bst.IsEmpty());
 }
 
-TEST(BinarySearchTreeTest, ExpectTreeIsNotEmpty) {
+TEST_F(BinarySearchTreeTest, ExpectTreeIsNotEmpty) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   EXPECT_FALSE(bst.IsEmpty());
@@ -21,27 +26,27 @@ TEST(BinarySearchTreeTest, ExpectTreeIsNotEmpty) {
 /**
  * Insert() and Contain() Tests
  */
-TEST(BinarySearchTreeTest, ExpectInsertAndContainElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectInsertAndContainElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   EXPECT_TRUE(bst.Contains(5));
 }
 
-TEST(BinarySearchTreeTest, ExpectOnLeftSideOfTreeContainElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectOnLeftSideOfTreeContainElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(4);
   EXPECT_TRUE(bst.Contains(4));
 }
 
-TEST(BinarySearchTreeTest, ExpectOnRightSideOfTreeContainElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectOnRightSideOfTreeContainElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(6);
   EXPECT_TRUE(bst.Contains(6));
 }
 
-TEST(BinarySearchTreeTest, ExpectNotContainElementFail) {
+TEST_F(BinarySearchTreeTest, ExpectNotContainElementFail) {
   BinarySearchTree<int> bst;
   EXPECT_FALSE(bst.Contains(5));
 }
@@ -49,7 +54,7 @@ TEST(BinarySearchTreeTest, ExpectNotContainElementFail) {
 /**
  * FindMin() and FindMax() Tests
  */
-TEST(BinarySearchTreeTest, ExpectFindMinElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectFindMinElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(4);
@@ -57,13 +62,13 @@ TEST(BinarySearchTreeTest, ExpectFindMinElementSuccess) {
   int min = bst.FindMin();
   EXPECT_EQ(4, min);
 }
-TEST(BinarySearchTreeTest, ExpectFindMinElementOnEmptyTreeFail) {
+TEST_F(BinarySearchTreeTest, ExpectFindMinElementOnEmptyTreeFail) {
   BinarySearchTree<int> bst;
   int null_value = bst.FindMin();
   EXPECT_EQ(NULL, null_value);
 }
 
-TEST(BinarySearchTreeTest, ExpectFindMaxElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectFindMaxElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(4);
@@ -72,7 +77,7 @@ TEST(BinarySearchTreeTest, ExpectFindMaxElementSuccess) {
   EXPECT_EQ(6, max);
 }
 
-TEST(BinarySearchTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
+TEST_F(BinarySearchTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
   BinarySearchTree<int> bst;
   int null_value = bst.FindMax();
   EXPECT_EQ(NULL, null_value);
@@ -81,14 +86,14 @@ TEST(BinarySearchTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
 /**
  * Remove() Tests
  */
-TEST(BinarySearchTreeTest, ExpectRemoveElementSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectRemoveElementSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Remove(5);
   EXPECT_TRUE(bst.IsEmpty());
 }
 
-TEST(BinarySearchTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(6);
@@ -98,7 +103,7 @@ TEST(BinarySearchTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   EXPECT_FALSE(bst.Contains(7));
 }
 
-TEST(BinarySearchTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(7);
   bst.Insert(6);
@@ -108,7 +113,7 @@ TEST(BinarySearchTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   EXPECT_FALSE(bst.Contains(5));
 }
 
-TEST(BinarySearchTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(6);
@@ -124,7 +129,7 @@ TEST(BinarySearchTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
 /**
  * Clear() Tests
  */
-TEST(BinarySearchTreeTest, ExpectClearAllElementsSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectClearAllElementsSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(6);
@@ -137,7 +142,7 @@ TEST(BinarySearchTreeTest, ExpectClearAllElementsSuccess) {
 /**
  * Copy Constructor & Move Constructor Tests
  */
-TEST(BinarySearchTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(4);
@@ -149,7 +154,7 @@ TEST(BinarySearchTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   EXPECT_TRUE(new_bst.Contains(7));
 }
 
-TEST(BinarySearchTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
+TEST_F(BinarySearchTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
   BinarySearchTree<int> bst;
   bst.Insert(5);
   bst.Insert(4);

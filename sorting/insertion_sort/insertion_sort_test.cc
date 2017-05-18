@@ -1,4 +1,6 @@
-#include "selection_sort.h"
+#include "insertion_sort.h"
+
+#include <gtest/gtest.h>
 
 namespace algorithms_archive {
 namespace sorting {

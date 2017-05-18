@@ -6,10 +6,15 @@
 
 namespace algorithms_archive {
 namespace tree {
+class RopeStringTest : public testing::Test {
+  virtual void SetUp() {}
+
+  virtual void TearDown() {}
+};
 /**
  * ToString() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringIsEmpty) {
+TEST_F(RopeStringTest, ExpectRopeStringIsEmpty) {
   RopeString str;
   EXPECT_EQ("", str.ToString());
 }
@@ -17,7 +22,7 @@ TEST(RopeStringTest, ExpectRopeStringIsEmpty) {
 /**
  * Append() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringAppendSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringAppendSuccess) {
   RopeString str;
   str.Append("append1 ");
   str.Append("append2");
@@ -27,7 +32,7 @@ TEST(RopeStringTest, ExpectRopeStringAppendSuccess) {
 /**
  * Prepend() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringPrependSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringPrependSuccess) {
   RopeString str;
   str.Prepend("prepend1");
   str.Prepend("prepend2 ");
@@ -37,7 +42,7 @@ TEST(RopeStringTest, ExpectRopeStringPrependSuccess) {
 /**
  * Empty() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringEmptySuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringEmptySuccess) {
   RopeString str;
   str.Prepend("prepend1");
   str.Empty();
@@ -47,7 +52,7 @@ TEST(RopeStringTest, ExpectRopeStringEmptySuccess) {
 /**
  * Concat() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringConcatSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringConcatSuccess) {
   RopeString str1;
   RopeString str2;
   str1.Append("str1 ");
@@ -59,17 +64,17 @@ TEST(RopeStringTest, ExpectRopeStringConcatSuccess) {
 /**
  * Index() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringReturn1thCharSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringReturn1thCharSuccess) {
   RopeString str;
   str.Prepend("character");
   EXPECT_EQ('c', str.Index(1));
 }
-TEST(RopeStringTest, ExpectRopeStringReturn8thCharSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringReturn8thCharSuccess) {
   RopeString str;
   str.Prepend("character");
   EXPECT_EQ('r', str.Index(9));
 }
-TEST(RopeStringTest, ExpectRopeStringReturnNullCharSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringReturnNullCharSuccess) {
   RopeString str;
   str.Prepend("character");
   EXPECT_EQ('\0', str.Index(100));
@@ -78,39 +83,39 @@ TEST(RopeStringTest, ExpectRopeStringReturnNullCharSuccess) {
 /**
  * Delete() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringDeleteSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringDeleteSuccess) {
   RopeString str;
   str.Append("character");
-  str.Delete(3,2);
+  str.Delete(3, 2);
   EXPECT_EQ("chacter", str.ToString());
 }
-TEST(RopeStringTest, ExpectRopeStringDeleteFirstPartSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringDeleteFirstPartSuccess) {
   RopeString str;
   str.Append("character");
-  str.Delete(1,3);
+  str.Delete(1, 3);
   EXPECT_EQ("racter", str.ToString());
 }
-TEST(RopeStringTest, ExpectRopeStringDeleteLastPartSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringDeleteLastPartSuccess) {
   RopeString str;
   str.Append("character");
-  str.Delete(8,50);
+  str.Delete(8, 50);
   EXPECT_EQ("charact", str.ToString());
 }
 
 /**
  * Insert() Tests
  */
-TEST(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringInsertStringSuccess) {
   RopeString str;
   str.Insert(0, "insertion");
   EXPECT_EQ("insertion", str.ToString());
 }
-TEST(RopeStringTest, ExpectRopeStringInsertStringAnyPositionSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringInsertStringAnyPositionSuccess) {
   RopeString str;
   str.Insert(5, "insertion");
   EXPECT_EQ("insertion", str.ToString());
 }
-TEST(RopeStringTest, ExpectRopeStringInsertStringAt3rdPositionSuccess) {
+TEST_F(RopeStringTest, ExpectRopeStringInsertStringAt3rdPositionSuccess) {
   RopeString str;
   str.Insert(0, "insertion");
   str.Insert(3, " middle ");
@@ -120,7 +125,7 @@ TEST(RopeStringTest, ExpectRopeStringInsertStringAt3rdPositionSuccess) {
 /**
  * Copy Constructor & Move Constructor Tests
  */
-TEST(RopeStringTest, ExpectCopyAllElementsFromRopeStringSuccess) {
+TEST_F(RopeStringTest, ExpectCopyAllElementsFromRopeStringSuccess) {
   RopeString str;
   str.Append("abc");
   RopeString new_str = str;
@@ -128,7 +133,7 @@ TEST(RopeStringTest, ExpectCopyAllElementsFromRopeStringSuccess) {
   EXPECT_EQ("abc", new_str.ToString());
 }
 
-TEST(RopeStringTest, ExpectMoveAllElementsFromRopeStringSuccess) {
+TEST_F(RopeStringTest, ExpectMoveAllElementsFromRopeStringSuccess) {
   RopeString str;
   str.Append("abc");
   RopeString new_str = std::move(str);

@@ -1,14 +1,13 @@
-#ifndef ALGORITHMS_ARCHIVE_SORTING_SELECTIONSORT_SELECTIONSORT_H_
-#define ALGORITHMS_ARCHIVE_SORTING_SELECTIONSORT_SELECTIONSORT_H_
+#ifndef ALGORITHMS_ARCHIVE_SELECTION_SORT_H_
+#define ALGORITHMS_ARCHIVE_SELECTION_SORT_H_
+#include <vector>
 
 namespace algorithms_archive {
 namespace sorting {
 template<typename Comparable>
-class SelectionSort {
- public:
+void SelectionSort(std::vector<Comparable> &container) {
 
-};
+}
 } // namespace sorting
 } // namespace algorithms_archive
-
-#endif //ALGORITHMS_ARCHIVE_SORTING_SELECTIONSORT_SELECTIONSORT_H_
+#endif //ALGORITHMS_ARCHIVE_SELECTION_SORT_H_

@@ -4,15 +4,20 @@
 
 namespace algorithms_archive {
 namespace tree {
+class SplayTreeTest : public testing::Test {
+  virtual void SetUp() {}
+
+  virtual void TearDown() {}
+};
 /**
  * IsEmpty() Tests
  */
-TEST(SplayTreeTest, ExpectTreeIsEmpty) {
+TEST_F(SplayTreeTest, ExpectTreeIsEmpty) {
   SplayTree<int> splay_tree;
   EXPECT_TRUE(splay_tree.IsEmpty());
 }
 
-TEST(SplayTreeTest, ExpectTreeIsNotEmpty) {
+TEST_F(SplayTreeTest, ExpectTreeIsNotEmpty) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   EXPECT_FALSE(splay_tree.IsEmpty());
@@ -21,7 +26,7 @@ TEST(SplayTreeTest, ExpectTreeIsNotEmpty) {
 /**
  * Insert() and Find() Tests
  */
-TEST(SplayTreeTest, ExpectInsertAndFindElementSuccess) {
+TEST_F(SplayTreeTest, ExpectInsertAndFindElementSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   const SplayTreeNode<int> *find_node = splay_tree.Find(5);
@@ -31,7 +36,7 @@ TEST(SplayTreeTest, ExpectInsertAndFindElementSuccess) {
   EXPECT_EQ(nullptr, find_node->right);
 }
 
-TEST(SplayTreeTest, ExpectLeftElementSplayToRootSuccess) {
+TEST_F(SplayTreeTest, ExpectLeftElementSplayToRootSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(4);
@@ -48,7 +53,7 @@ TEST(SplayTreeTest, ExpectLeftElementSplayToRootSuccess) {
   EXPECT_EQ(nullptr, new_root->right->left);
 }
 
-TEST(SplayTreeTest, ExpectRightElementSplayToRootSuccess) {
+TEST_F(SplayTreeTest, ExpectRightElementSplayToRootSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(6);
@@ -68,14 +73,14 @@ TEST(SplayTreeTest, ExpectRightElementSplayToRootSuccess) {
 /**
  * Remove() Tests
  */
-TEST(SplayTreeTest, ExpectRemoveElementSuccess) {
+TEST_F(SplayTreeTest, ExpectRemoveElementSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Remove(5);
   EXPECT_TRUE(splay_tree.IsEmpty());
 }
 
-TEST(SplayTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
+TEST_F(SplayTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(6);
@@ -84,7 +89,7 @@ TEST(SplayTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   EXPECT_FALSE(splay_tree.Contains(7));
 }
 
-TEST(SplayTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
+TEST_F(SplayTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(7);
   splay_tree.Insert(6);
@@ -93,7 +98,7 @@ TEST(SplayTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   EXPECT_FALSE(splay_tree.Contains(5));
 }
 
-TEST(SplayTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
+TEST_F(SplayTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(6);
@@ -108,7 +113,7 @@ TEST(SplayTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
 /**
  * Clear() Tests
  */
-TEST(SplayTreeTest, ExpectClearAllElementsSuccess) {
+TEST_F(SplayTreeTest, ExpectClearAllElementsSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(6);
@@ -121,7 +126,7 @@ TEST(SplayTreeTest, ExpectClearAllElementsSuccess) {
 /**
  * Copy Constructor & Move Constructor Tests
  */
-TEST(SplayTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
+TEST_F(SplayTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(4);
@@ -133,7 +138,7 @@ TEST(SplayTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   EXPECT_EQ(7, new_splay_tree.Find(7)->data);
 }
 
-TEST(SplayTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
+TEST_F(SplayTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
   SplayTree<int> splay_tree;
   splay_tree.Insert(5);
   splay_tree.Insert(4);

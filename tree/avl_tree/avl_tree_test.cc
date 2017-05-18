@@ -4,15 +4,21 @@
 
 namespace algorithms_archive {
 namespace tree {
+class AvlTreeTest : public testing::Test {
+  virtual void SetUp() {}
+
+  virtual void TearDown() {}
+};
+
 /**
  * IsEmpty() Tests
  */
-TEST(AvlTreeTest, ExpectTreeIsEmpty) {
+TEST_F(AvlTreeTest, ExpectTreeIsEmpty) {
   AvlTree<int> avl_tree;
   EXPECT_TRUE(avl_tree.IsEmpty());
 }
 
-TEST(AvlTreeTest, ExpectTreeIsNotEmpty) {
+TEST_F(AvlTreeTest, ExpectTreeIsNotEmpty) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   EXPECT_FALSE(avl_tree.IsEmpty());
@@ -21,32 +27,32 @@ TEST(AvlTreeTest, ExpectTreeIsNotEmpty) {
 /**
  * Insert() and Contain() Tests
  */
-TEST(AvlTreeTest, ExpectInsertAndContainElementSuccess) {
+TEST_F(AvlTreeTest, ExpectInsertAndContainElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   EXPECT_TRUE(avl_tree.Contains(5));
 }
 
-TEST(AvlTreeTest, ExpectOnLeftSideOfTreeContainElementSuccess) {
+TEST_F(AvlTreeTest, ExpectOnLeftSideOfTreeContainElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(4);
   EXPECT_TRUE(avl_tree.Contains(4));
 }
 
-TEST(AvlTreeTest, ExpectOnRightSideOfTreeContainElementSuccess) {
+TEST_F(AvlTreeTest, ExpectOnRightSideOfTreeContainElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(6);
   EXPECT_TRUE(avl_tree.Contains(6));
 }
 
-TEST(AvlTreeTest, ExpectNotContainElementFail) {
+TEST_F(AvlTreeTest, ExpectNotContainElementFail) {
   AvlTree<int> avl_tree;
   EXPECT_FALSE(avl_tree.Contains(5));
 }
 
-TEST(AvlTreeTest, ExpectBalancingLeftHeavySubtreeRightRotationSuccess) {
+TEST_F(AvlTreeTest, ExpectBalancingLeftHeavySubtreeRightRotationSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(9);
   avl_tree.Insert(8);
@@ -54,7 +60,7 @@ TEST(AvlTreeTest, ExpectBalancingLeftHeavySubtreeRightRotationSuccess) {
   EXPECT_EQ(2, avl_tree.TreeHeight());
 }
 
-TEST(AvlTreeTest, ExpectBalancingRightHeavySubtreeLeftRotationSuccess) {
+TEST_F(AvlTreeTest, ExpectBalancingRightHeavySubtreeLeftRotationSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(6);
@@ -62,7 +68,7 @@ TEST(AvlTreeTest, ExpectBalancingRightHeavySubtreeLeftRotationSuccess) {
   EXPECT_EQ(2, avl_tree.TreeHeight());
 }
 
-TEST(AvlTreeTest, ExpectBalancingLeftHeavySubtreeLeftRightRotationSuccess) {
+TEST_F(AvlTreeTest, ExpectBalancingLeftHeavySubtreeLeftRightRotationSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(10);
   avl_tree.Insert(5);
@@ -70,7 +76,7 @@ TEST(AvlTreeTest, ExpectBalancingLeftHeavySubtreeLeftRightRotationSuccess) {
   EXPECT_EQ(2, avl_tree.TreeHeight());
 }
 
-TEST(AvlTreeTest, ExpectBalancingRightHeavySubtreeRightLeftRotationSuccess) {
+TEST_F(AvlTreeTest, ExpectBalancingRightHeavySubtreeRightLeftRotationSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(8);
   avl_tree.Insert(5);
@@ -81,7 +87,7 @@ TEST(AvlTreeTest, ExpectBalancingRightHeavySubtreeRightLeftRotationSuccess) {
 /**
  * FindMin() and FindMax() Tests
  */
-TEST(AvlTreeTest, ExpectFindMinElementSuccess) {
+TEST_F(AvlTreeTest, ExpectFindMinElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(4);
@@ -89,13 +95,13 @@ TEST(AvlTreeTest, ExpectFindMinElementSuccess) {
   int min = avl_tree.FindMin();
   EXPECT_EQ(4, min);
 }
-TEST(AvlTreeTest, ExpectFindMinElementOnEmptyTreeFail) {
+TEST_F(AvlTreeTest, ExpectFindMinElementOnEmptyTreeFail) {
   AvlTree<int> avl_tree;
   int null_value = avl_tree.FindMin();
   EXPECT_EQ(NULL, null_value);
 }
 
-TEST(AvlTreeTest, ExpectFindMaxElementSuccess) {
+TEST_F(AvlTreeTest, ExpectFindMaxElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(4);
@@ -104,7 +110,7 @@ TEST(AvlTreeTest, ExpectFindMaxElementSuccess) {
   EXPECT_EQ(6, max);
 }
 
-TEST(AvlTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
+TEST_F(AvlTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
   AvlTree<int> avl_tree;
   int null_value = avl_tree.FindMax();
   EXPECT_EQ(NULL, null_value);
@@ -113,14 +119,14 @@ TEST(AvlTreeTest, ExpectFindMaxElementOnEmptyTreeFail) {
 /**
  * Remove() Tests
  */
-TEST(AvlTreeTest, ExpectRemoveElementSuccess) {
+TEST_F(AvlTreeTest, ExpectRemoveElementSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Remove(5);
   EXPECT_TRUE(avl_tree.IsEmpty());
 }
 
-TEST(AvlTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
+TEST_F(AvlTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(6);
@@ -130,7 +136,7 @@ TEST(AvlTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   EXPECT_FALSE(avl_tree.Contains(7));
 }
 
-TEST(AvlTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
+TEST_F(AvlTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(7);
   avl_tree.Insert(6);
@@ -140,7 +146,7 @@ TEST(AvlTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
   EXPECT_FALSE(avl_tree.Contains(5));
 }
 
-TEST(AvlTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
+TEST_F(AvlTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(6);
@@ -156,7 +162,7 @@ TEST(AvlTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
 /**
  * Clear() Tests
  */
-TEST(AvlTreeTest, ExpectClearAllElementsSuccess) {
+TEST_F(AvlTreeTest, ExpectClearAllElementsSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(6);
@@ -169,7 +175,7 @@ TEST(AvlTreeTest, ExpectClearAllElementsSuccess) {
 /**
  * Copy Constructor & Move Constructor Tests
  */
-TEST(AvlTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
+TEST_F(AvlTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(4);
@@ -181,7 +187,7 @@ TEST(AvlTreeTest, ExpectCopyAllElementsFromTreeSuccess) {
   EXPECT_TRUE(new_avl_tree.Contains(7));
 }
 
-TEST(AvlTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
+TEST_F(AvlTreeTest, ExpectMoveAllElementsFromTreeSuccess) {
   AvlTree<int> avl_tree;
   avl_tree.Insert(5);
   avl_tree.Insert(4);

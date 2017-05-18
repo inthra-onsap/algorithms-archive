@@ -6,6 +6,7 @@ namespace algorithms_archive {
 namespace tree {
 class LeftistHeapTest : public testing::Test {
   virtual void SetUp() {}
+
   virtual void TearDown() {}
 };
 
