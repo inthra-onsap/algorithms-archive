@@ -3,8 +3,10 @@
 ## Algorithms
 
 #### Sorting
+- [Bubble Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bubble_sort)
 - [Insertion Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/insertion_sort)
 - [Selection Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/selection_sort)
+- [Shell Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/shell_sort)
 - [Merge Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/merge_sort)
 - [Quick Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/quick_sort)
 - [Bucket Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bucket_sort)
@@ -21,3 +23,5 @@
 - [Binary Heap (Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_heap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
+
+#### Graphs

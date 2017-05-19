@@ -1,4 +1,4 @@
-#include "insertion_sort.h"
+#include "bubble_sort.h"
 
 #include <vector>
 
@@ -6,9 +6,9 @@
 
 namespace algorithms_archive {
 namespace sorting {
-TEST(InsertionSortTest, ExpectSortUnsortedArraySuccess) {
+TEST(BubbleSortTest, ExpectSortUnsortedArraySuccess) {
   std::vector<int> container{2, 7, 1, 6, 4, 3};
-  InsertionSort<int>(container);
+  BubbleSort<int>(container);
   EXPECT_EQ(1, container[0]);
   EXPECT_EQ(2, container[1]);
   EXPECT_EQ(3, container[2]);
@@ -17,9 +17,9 @@ TEST(InsertionSortTest, ExpectSortUnsortedArraySuccess) {
   EXPECT_EQ(7, container[5]);
 }
 
-TEST(InsertionSortTest, ExpectSortSortedArraySuccess) {
+TEST(BubbleSortTest, ExpectSortSortedArraySuccess) {
   std::vector<int> container{1, 2, 3, 4, 5, 6};
-  InsertionSort<int>(container);
+  BubbleSort<int>(container);
   EXPECT_EQ(1, container[0]);
   EXPECT_EQ(2, container[1]);
   EXPECT_EQ(3, container[2]);
