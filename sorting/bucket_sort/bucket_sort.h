@@ -5,6 +5,11 @@
 namespace algorithms_archive{
 namespace sorting{
 template<typename Comparable>
+
+/**
+ * @tparam Comparable
+ * @param container
+ */
 void BucketSort(std::vector<Comparable> &container){
 
 }

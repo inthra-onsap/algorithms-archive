@@ -9,6 +9,7 @@
 - [Shell Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/shell_sort)
 - [Merge Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/merge_sort)
 - [Quick Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/quick_sort)
+- [Heap Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/heap_sort)
 - [Bucket Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bucket_sort)
 - [Radix Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/radix_sort)
 
