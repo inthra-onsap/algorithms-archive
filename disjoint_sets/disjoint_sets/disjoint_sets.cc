@@ -10,15 +10,14 @@ const int DisjointSets::Find(const int idx) {
   }
 }
 
-void DisjointSets::UnionByHeight(int set1, int set2) {
+void DisjointSets::UnionBySize(int set1, int set2) {
   int root1 = Find(set1);
   int root2 = Find(set2);
   if (set[root2] < set[root1]) {
+    set[root2] += (set[root1] + 1);
     set[root1] = root2;
   } else {
-    if (set[root1] == set[root2]) {
-      --set[root1];
-    }
+    set[root1] += (set[root2] + 1);
     set[root2] = root1;
   }
 }
