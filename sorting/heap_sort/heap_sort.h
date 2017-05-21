@@ -33,14 +33,15 @@ void SiftDown(std::vector<Comparable> &container, int parent, int size) {
     parent = child;
     child = LeftChildIndex(child);
   }
+  container[parent] = std::move(tmp);
 }
 
 template<typename Comparable>
 void HeapSort(std::vector<Comparable> &container) {
-  for (int i = container.size() / 2 - 1; i >= 0; --i) {
+  for (int i = (container.size() / 2) - 1; i >= 0; --i) {
     SiftDown(container, i, container.size());
   }
-  for (int i = container.size(); i > 0; --i) {
+  for (int i = container.size() - 1; i > 0; --i) {
     std::swap(container[0], container[i]);
     SiftDown(container, 0, i);
   }

@@ -26,3 +26,8 @@
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
 
 #### Graphs
+TBD.
+
+#### Disjoint Sets
+- [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
+

@@ -12,7 +12,7 @@ void ShellSort(std::vector<Comparable> &container) {
     for (int i = gap; i < container.size(); ++i) {
       Comparable tmp = std::move(container[i]);
       int j = i;
-      while (j >= gap && container[j - gap]) {
+      while (j >= gap && tmp < container[j - gap]) {
         container[j] = std::move(container[j - gap]);
         j -= gap;
       }

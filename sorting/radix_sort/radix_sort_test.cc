@@ -1,29 +1,32 @@
 #include "radix_sort.h"
 
+#include <string>
+#include <vector>
+
 #include <gtest/gtest.h>
 
-namespace algorithms_archive{
-namespace sorting{
+namespace algorithms_archive {
+namespace sorting {
 TEST(RadixSortTest, ExpectSortUnsortedArraySuccess) {
-  std::vector<int> container{2, 7, 1, 6, 4, 3};
-  RadixSort<int>(container);
-  EXPECT_EQ(1, container[0]);
-  EXPECT_EQ(2, container[1]);
-  EXPECT_EQ(3, container[2]);
-  EXPECT_EQ(4, container[3]);
-  EXPECT_EQ(6, container[4]);
-  EXPECT_EQ(7, container[5]);
+  std::vector<std::string> container{"bat", "dog", "cat", "fox", "egg", "ant"};
+  RadixSort<std::string>(container, 3);
+  EXPECT_EQ("ant", container[0]);
+  EXPECT_EQ("bat", container[1]);
+  EXPECT_EQ("cat", container[2]);
+  EXPECT_EQ("dog", container[3]);
+  EXPECT_EQ("egg", container[4]);
+  EXPECT_EQ("fox", container[5]);
 }
 
 TEST(RadixSortTest, ExpectSortSortedArraySuccess) {
-  std::vector<int> container{1, 2, 3, 4, 5, 6};
-  RadixSort<int>(container);
-  EXPECT_EQ(1, container[0]);
-  EXPECT_EQ(2, container[1]);
-  EXPECT_EQ(3, container[2]);
-  EXPECT_EQ(4, container[3]);
-  EXPECT_EQ(5, container[4]);
-  EXPECT_EQ(6, container[5]);
+  std::vector<std::string> container{"a", "b", "c", "d", "e", "f"};
+  RadixSort<std::string>(container, 1);
+  EXPECT_EQ("a", container[0]);
+  EXPECT_EQ("b", container[1]);
+  EXPECT_EQ("c", container[2]);
+  EXPECT_EQ("d", container[3]);
+  EXPECT_EQ("e", container[4]);
+  EXPECT_EQ("f", container[5]);
 }
 } // namespace sorting
 } // namespace algorithms_archive
