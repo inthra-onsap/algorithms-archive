@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "DisjointSetsTest.ExpectDisjointSetsTransitiveSuccess";
+  //testing::GTEST_FLAG(filter) = "GraphTopologicalSortTest.ExpectDagTopologicalSortSuccess";
   return RUN_ALL_TESTS();
 }

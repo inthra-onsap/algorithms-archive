@@ -13,6 +13,10 @@
 - [Bucket Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bucket_sort)
 - [Radix Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/radix_sort)
 
+#### Graphs
+- [Topological Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/topological_sort)
+
+
 ## Data Structures
 
 #### Trees
@@ -24,9 +28,6 @@
 - [Binary Heap (Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_heap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
-
-#### Graphs
-TBD.
 
 #### Disjoint Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
