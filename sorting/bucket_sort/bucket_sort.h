@@ -1,6 +1,7 @@
 #ifndef ALGORITHMS_ARCHIVE_BUCKET_SORT_H_
 #define ALGORITHMS_ARCHIVE_BUCKET_SORT_H_
 #include <vector>
+#include <cmath>
 
 namespace algorithms_archive {
 namespace sorting {
@@ -28,16 +29,19 @@ void InsertionSortInternal(std::vector<Comparable> &chunk) {
  */
 template<typename Comparable>
 void BucketSort(std::vector<Comparable> &container) {
+  int num_buckets = 10;
+  int pos;
   Comparable max = *std::max_element(container.begin(), container.end());
-  std::vector<std::vector<Comparable>> bucket(10);
-  int divider = 10;
+  std::vector<std::vector<Comparable>> bucket(num_buckets, std::vector<Comparable>());
+  int divider = std::ceil(float((max + 1.0) / num_buckets));
   for (int i = 0; i < container.size(); ++i) {
-    bucket[container[i] % divider].emplace_back(container[i]);
+    pos = std::floor(container[i] / divider);
+    bucket[pos].push_back(container[i]);
   }
   for (int i = 0; i < bucket.size(); ++i) {
     InsertionSortInternal(bucket[i]);
   }
-  int pos = 0;
+  pos = 0;
   for (int i = 0; i < bucket.size(); ++i) {
     for (int j = 0; j < bucket[i].size(); ++j) {
       container[pos++] = bucket[i][j];
