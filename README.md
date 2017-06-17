@@ -16,6 +16,8 @@
 #### Graphs
 - [Topological Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/topological_sort)
 
+#### Memory Management
+- [Least Recently Used (LRU)](https://github.com/inthra-onsap/algorithms-archive/tree/master/memory_management/lru_cache)
 
 ## Data Structures
 
