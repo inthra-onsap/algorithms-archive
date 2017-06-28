@@ -25,7 +25,7 @@ class GraphTopologicalSort {
 
   bool IsCyclicGraph(std::vector<bool> &visited, std::vector<bool> &visiting, int vertex);
 
-  void Bfs(std::vector<int> &sorted, std::vector<bool> &visited, int vertex);
+  void Dfs(std::vector<int> &sorted, std::vector<bool> &visited, int vertex);
 };
 } // namespace graphs
 } // namespace algorithms_archive

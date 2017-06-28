@@ -8,8 +8,8 @@ void GraphTopologicalSort::AddEdge(int vertex1, int vertex2) {
 }
 
 const std::vector<int> GraphTopologicalSort::TopologicalSort() {
-  std::vector<bool>visited(graph.size(), false);
-  std::vector<bool>visiting(graph.size(), false);
+  std::vector<bool> visited(graph.size(), false);
+  std::vector<bool> visiting(graph.size(), false);
   std::vector<int> sorted;
   for (int i = 0; i < graph.size(); ++i) {
     if (IsCyclicGraph(visited, visiting, i)) {
@@ -20,7 +20,7 @@ const std::vector<int> GraphTopologicalSort::TopologicalSort() {
   std::fill(visited.begin(), visited.end(), 0);
   for (int i = 0; i < graph.size(); ++i) {
     if (!visited[i]) {
-      Bfs(sorted, visited, i);
+      Dfs(sorted, visited, i);
     }
   }
   std::reverse(sorted.begin(), sorted.end());
@@ -38,16 +38,16 @@ bool GraphTopologicalSort::IsCyclicGraph(std::vector<bool> &visited, std::vector
         return true;
       }
     }
+    visiting[vertex] = false;
   }
-  visiting[vertex] = false;
   return false;
 }
 
-void GraphTopologicalSort::Bfs(std::vector<int> &sorted, std::vector<bool> &visited, int vertex) {
+void GraphTopologicalSort::Dfs(std::vector<int> &sorted, std::vector<bool> &visited, int vertex) {
   visited[vertex] = true;
   for (auto it = graph[vertex].begin(); it != graph[vertex].end(); ++it) {
     if (!visited[*it]) {
-      Bfs(sorted, visited, *it);
+      Dfs(sorted, visited, *it);
     }
   }
   sorted.push_back(vertex);
