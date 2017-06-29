@@ -70,22 +70,34 @@ class BinaryHeap {
     }
   }
 
+  uint64_t Parent(uint64_t index) {
+    return index / 2;
+  }
+
+  uint64_t LeftChild(uint64_t index) {
+    return index * 2;
+  }
+
+  uint64_t RightChild(uint64_t index) {
+    return index * 2 + 1;
+  }
+
   void SiftUp(uint64_t pos) {
-    while ((pos / 2) > 0 && tree[pos] < tree[pos / 2]) {
-      std::swap(tree[pos / 2], tree[pos]);
+    while (Parent(pos) > 0 && tree[pos] < tree[Parent(pos)]) {
+      std::swap(tree[Parent(pos)], tree[pos]);
       pos /= 2;
     }
   }
 
   void SiftDown(uint64_t pos) {
-    while ((2 * pos <= size && tree[pos] > tree[2 * pos]) ||
-        (2 * pos + 1 <= size && tree[pos] > tree[2 * pos + 1])) {
-      if (tree[2 * pos] < tree[2 * pos + 1]) {
-        std::swap(tree[2 * pos], tree[pos]);
-        pos *= 2;
+    while ((LeftChild(pos) <= size && tree[pos] > tree[LeftChild(pos)]) ||
+        (RightChild(pos) <= size && tree[pos] > tree[RightChild(pos)])) {
+      if (RightChild(pos) > size || tree[LeftChild(pos)] < tree[RightChild(pos)]) {
+        std::swap(tree[LeftChild(pos)], tree[pos]);
+        pos = LeftChild(pos);
       } else {
-        std::swap(tree[2 * pos + 1], tree[pos]);
-        pos = 2 * pos + 1;
+        std::swap(tree[RightChild(pos)], tree[pos]);
+        pos = RightChild(pos);
       }
     }
   }

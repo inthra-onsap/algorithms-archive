@@ -1,6 +1,8 @@
 #ifndef ALGORITHMS_ARCHIVE_DIJKSTRA_H_
 #define ALGORITHMS_ARCHIVE_DIJKSTRA_H_
 
+#include "dijkstra_min_heap.h"
+
 #include <vector>
 #include <set>
 #include <utility>

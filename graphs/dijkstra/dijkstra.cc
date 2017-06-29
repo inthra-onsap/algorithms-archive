@@ -4,8 +4,8 @@ namespace algorithms_archive {
 namespace graphs {
 
 void Dijkstra::AddEdge(int vertex_1, int vertex_2, int weight) {
-  adj_list[vertex_1].push_back(std::make_pair(weight, vertex_2));
-  adj_list[vertex_2].push_back(std::make_pair(weight, vertex_1));
+  adj_list[vertex_1].push_back(std::make_pair(vertex_2, weight));
+  adj_list[vertex_2].push_back(std::make_pair(vertex_1, weight));
 }
 
 std::vector<int> Dijkstra::GetShortestPath(int source, int sink) {
@@ -14,31 +14,34 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int sink) {
     return std::vector<int>();
   }
 
-  std::set<std::pair<int, int>> queue;
+  DijkstraMinHeap queue;
   std::vector<int> dist(num_vertices, INT_MAX);
   std::vector<int> prev(num_vertices, -1);
   std::vector<bool> visited(num_vertices, false);
   std::vector<int> shortest_path;
 
-  queue.insert(std::make_pair(0, source));
+  queue.Insert(std::make_pair(source, 0));
   dist[source] = 0;
-  while (!queue.empty()) {
-    int curr_vertex = queue.begin()->second;
-    int curr_weight = queue.begin()->first;
-    queue.erase(queue.begin());
+  for (int i = 0; i < dist.size(); ++i) {
+    if (dist[i] == INT_MAX) {
+      queue.Insert(std::make_pair(i, dist[i]));
+    }
+  }
+
+  while (!queue.Empty()) {
+    int curr_vertex = queue.GetMin().first;
+    int curr_weight = queue.GetMin().second;
+    queue.DeleteMin();
     visited[curr_vertex] = true;
 
     for (auto it = adj_list[curr_vertex].begin(); it != adj_list[curr_vertex].end(); ++it) {
-      int weight = it->first;
-      int vertex = it->second;
+      int vertex = it->first;
+      int weight = it->second;
 
       if (!visited[vertex] && dist[vertex] > curr_weight + weight) {
-        if (dist[vertex] != INT_MAX) {
-          queue.erase(queue.find(std::make_pair(dist[vertex], vertex)));
-        }
         dist[vertex] = curr_weight + weight;
-        queue.insert(std::make_pair(dist[vertex], vertex));
         prev[vertex] = curr_vertex;
+        queue.UpdateWeight(vertex, dist[vertex]);
       }
     }
   }
