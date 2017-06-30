@@ -14,7 +14,7 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int terminal) {
     return std::vector<int>();
   }
 
-  DijkstraMinHeap queue;
+  GraphMinHeap<int> queue;
   std::vector<int> dist(num_vertices, INT_MAX);
   std::vector<int> prev(num_vertices, -1);
   std::vector<bool> visited(num_vertices, false);
