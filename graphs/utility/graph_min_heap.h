@@ -68,7 +68,7 @@ class GraphMinHeap {
   }
 
   void SiftUp(int index) {
-    while (Parent(index) > 0 && heap[Parent(index)].second > heap[index].second) {
+    while (Parent(index) >= 0 && heap[Parent(index)].second > heap[index].second) {
       std::swap(heap[Parent(index)], heap[index]);
       index = Parent(index);
     }

@@ -9,7 +9,7 @@ void Kruskal::AddEdge(int vertex_1, int vertex_2, int weight) {
 
 int Kruskal::GetMinimumSpaningValue() {
   disjoint_sets::DisjointSets disj_set(num_vertex);
-  int min_spaining_value = 0;
+  int min_spaning_value = 0;
   GraphMinHeap<std::pair<int, int>> min_heap;
 
   for (int i = 0; i < num_vertex; ++i) {
@@ -25,14 +25,14 @@ int Kruskal::GetMinimumSpaningValue() {
     int vertex2_set_no = disj_set.Find(vertex2);
 
     if ((vertex1_set_no == -1 && vertex2_set_no == -1) || vertex1_set_no != vertex2_set_no) {
-      min_spaining_value += min_heap.GetMin().second;
+      min_spaning_value += min_heap.GetMin().second;
       disj_set.UnionBySize(vertex1, vertex2);
     }
 
     min_heap.DeleteMin();
   }
 
-  return min_spaining_value;
+  return min_spaning_value;
 }
 
 } // namespace graphs

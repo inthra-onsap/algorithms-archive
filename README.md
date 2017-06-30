@@ -18,6 +18,7 @@
 - [Dijkstra's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/dijkstra)
 - [BellmanFord's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bellman_ford)
 - [Kruskal's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/kruskal)
+- [Prim's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/prim)
 
 #### Memory Management
 - [Least Recently Used (LRU)](https://github.com/inthra-onsap/algorithms-archive/tree/master/memory_management/lru_cache)
