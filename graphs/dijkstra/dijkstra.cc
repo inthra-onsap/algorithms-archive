@@ -8,9 +8,9 @@ void Dijkstra::AddEdge(int vertex_1, int vertex_2, int weight) {
   adj_list[vertex_2].push_back(std::make_pair(vertex_1, weight));
 }
 
-std::vector<int> Dijkstra::GetShortestPath(int source, int sink) {
+std::vector<int> Dijkstra::GetShortestPath(int source, int terminal) {
 
-  if (sink >= num_vertices || num_vertices <= 0 || source < 0) {
+  if (terminal >= num_vertices || num_vertices <= 0 || source < 0) {
     return std::vector<int>();
   }
 
@@ -46,9 +46,9 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int sink) {
     }
   }
 
-  while (prev[sink] != -1) {
-    shortest_path.push_back(sink);
-    sink = prev[sink];
+  while (prev[terminal] != -1) {
+    shortest_path.push_back(terminal);
+    terminal = prev[terminal];
   }
   shortest_path.push_back(source);
   std::reverse(shortest_path.begin(), shortest_path.end());

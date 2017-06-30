@@ -21,7 +21,7 @@ class Dijkstra {
 
   void AddEdge(int vertex_1, int vertex_2, int weight);
 
-  std::vector<int> GetShortestPath(int source, int sink);
+  std::vector<int> GetShortestPath(int source, int terminal);
 
  private:
   int num_vertices;
