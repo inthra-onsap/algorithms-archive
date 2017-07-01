@@ -88,19 +88,16 @@ std::vector<int> BidirectionalDijkstra::ProcessShortestPath(int source,
   }
 
   last = meeting_vertex;
-  while (prev[last] != -1) {
+  while (last != -1) {
     shortest_path.push_back(last);
     last = prev[last];
   }
-  shortest_path.push_back(source);
   std::reverse(shortest_path.begin(), shortest_path.end());
-
   last = prev_reserve[meeting_vertex];
-  while (prev_reserve[last] != -1) {
+  while (last != -1) {
     shortest_path.push_back(last);
     last = prev_reserve[last];
   }
-  shortest_path.push_back(terminal);
   return shortest_path;
 }
 

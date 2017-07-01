@@ -32,11 +32,10 @@ std::vector<int> BellmanFord::GetShortestPath(int source, int terminal) {
     }
   }
 
-  while (prev[terminal] != -1) {
+  while (terminal != -1) {
     shortest_path.push_back(terminal);
     terminal = prev[terminal];
   }
-  shortest_path.push_back(source);
   std::reverse(shortest_path.begin(), shortest_path.end());
   return shortest_path;
 }
