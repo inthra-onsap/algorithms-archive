@@ -41,5 +41,14 @@ TEST_F(BidirectionalDijkstraTest, ExpectReturnShortestPathSuccess) {
   EXPECT_EQ(5, shortest_path[2]);
 }
 
+TEST_F(BidirectionalDijkstraTest, ExpectOneVertexGraphReturnShortestPathSuccess) {
+  BidirectionalDijkstra graph(1);
+
+  graph.AddEdge(0, 0, 1);
+
+  std::vector<int> shortest_path = graph.GetShortestPath(0, 0);
+  EXPECT_EQ(0, shortest_path.size());
+}
+
 } // namespace graphs
 } // namespace algorithms_archive

@@ -32,5 +32,14 @@ TEST_F(DijkstraTest, ExpectEmptyGraphReturnEmptySuccess) {
   EXPECT_EQ(0, shortest_path.size());
 }
 
+TEST_F(DijkstraTest, ExpectOneVertexGraphReturnShortestPathSuccess) {
+  Dijkstra graph(1);
+
+  graph.AddEdge(0, 0, 1);
+
+  std::vector<int> shortest_path = graph.GetShortestPath(0, 0);
+  EXPECT_EQ(0, shortest_path[0]);
+}
+
 } // namespace graphs
 } // namespace algorithms_archive
