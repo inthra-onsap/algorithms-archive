@@ -1,5 +1,5 @@
-#ifndef ALGORITHMS_ARCHIVE_KRUSKAL_H
-#define ALGORITHMS_ARCHIVE_KRUSKAL_H
+#ifndef ALGORITHMS_ARCHIVE_KRUSKAL_H_
+#define ALGORITHMS_ARCHIVE_KRUSKAL_H_
 
 #include "../../disjoint_sets/disjoint_sets/disjoint_sets.h"
 #include "../utility/graph_min_heap.h"
@@ -28,4 +28,4 @@ class Kruskal {
 } // namespace graphs
 } // namespace algorithms_archive
 
-#endif //ALGORITHMS_ARCHIVE_KRUSKAL_H
+#endif //ALGORITHMS_ARCHIVE_KRUSKAL_H_

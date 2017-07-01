@@ -1,5 +1,5 @@
-#ifndef ALGORITHMS_ARCHIVE_BELLMANFORD_H
-#define ALGORITHMS_ARCHIVE_BELLMANFORD_H
+#ifndef ALGORITHMS_ARCHIVE_BELLMANFORD_H_
+#define ALGORITHMS_ARCHIVE_BELLMANFORD_H_
 
 #include <vector>
 #include <utility>
@@ -27,4 +27,4 @@ class BellmanFord {
 } // namespace graphs
 } // namespace algorithms_archive
 
-#endif //ALGORITHMS_ARCHIVE_BELLMANFORD_H
+#endif //ALGORITHMS_ARCHIVE_BELLMANFORD_H_

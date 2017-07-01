@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "DijkstraTest.ExpectReturnShortestPathSuccess";
+  //testing::GTEST_FLAG(filter) = "BidirectionalDijkstraTest.ExpectNoRoutesFromSourceToTerminalThenReturnEmptyPathSuccess";
   return RUN_ALL_TESTS();
 }

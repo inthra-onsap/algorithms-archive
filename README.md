@@ -16,6 +16,7 @@
 #### Graphs
 - [Topological Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/topological_sort)
 - [Dijkstra's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/dijkstra)
+- [Bidirectional Dijkstra's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bidirectional_dijkstra)
 - [BellmanFord's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bellman_ford)
 - [Kruskal's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/kruskal)
 - [Prim's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/prim)

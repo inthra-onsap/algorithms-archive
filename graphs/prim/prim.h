@@ -1,5 +1,5 @@
-#ifndef ALGORITHMS_ARCHIVE_PRIM_H
-#define ALGORITHMS_ARCHIVE_PRIM_H
+#ifndef ALGORITHMS_ARCHIVE_PRIM_H_
+#define ALGORITHMS_ARCHIVE_PRIM_H_
 
 #include "../utility/graph_min_heap.h"
 
@@ -29,4 +29,4 @@ class Prim {
 } // namespace algorithms_archive
 
 
-#endif //ALGORITHMS_ARCHIVE_PRIM_H
+#endif //ALGORITHMS_ARCHIVE_PRIM_H_

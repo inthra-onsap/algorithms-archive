@@ -1,5 +1,5 @@
-#ifndef ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H
-#define ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H
+#ifndef ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H_
+#define ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H_
 
 #include <utility>
 #include <vector>
@@ -40,10 +40,22 @@ class GraphMinHeap {
       }
     }
 
-    if (Parent(i) > 0 && heap[i].second < heap[Parent(i)].second) {
-      SiftUp(i);
+    Heapify(i);
+  }
+
+  void Upsert(int vertex, int weight) {
+    int i;
+    for (i = 0; i < size; ++i) {
+      if (heap[i].first == vertex) {
+        heap[i].second = weight;
+        break;
+      }
+    }
+
+    if (i == size) {
+      Insert(std::make_pair(vertex, weight));
     } else {
-      SiftDown(i);
+      Heapify(i);
     }
   }
 
@@ -65,6 +77,14 @@ class GraphMinHeap {
 
   int RightChild(int index) {
     return index * 2 + 2;
+  }
+
+  void Heapify(int index) {
+    if (Parent(index) >= 0 && heap[index].second < heap[Parent(index)].second) {
+      SiftUp(index);
+    } else {
+      SiftDown(index);
+    }
   }
 
   void SiftUp(int index) {
@@ -91,4 +111,4 @@ class GraphMinHeap {
 } // namespace graphs
 } // namespace algorithms_archive
 
-#endif //ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H
+#endif //ALGORITHMS_ARCHIVE_DIJSTRA_MIN_HEAP_H_
