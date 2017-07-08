@@ -1,6 +1,5 @@
-# Algorithms Archive
 
-## Algorithms
+# Algorithms & Data Structures
 
 #### Sorting
 - [Bubble Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/sorting/bubble_sort)
@@ -20,11 +19,10 @@
 - [BellmanFord's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bellman_ford)
 - [Kruskal's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/kruskal)
 - [Prim's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/prim)
+- [Ford Fulkerson's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/ford_fulkerson)
 
 #### Memory Management
 - [Least Recently Used (LRU)](https://github.com/inthra-onsap/algorithms-archive/tree/master/memory_management/lru_cache)
-
-## Data Structures
 
 #### Trees
 - [Binary Search Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/bst)
