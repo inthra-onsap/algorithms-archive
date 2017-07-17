@@ -38,7 +38,7 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int terminal) {
       int vertex = it->first;
       int weight = it->second;
 
-      if (!visited[vertex] && dist[vertex] > curr_weight + weight) {
+      if (dist[vertex] > curr_weight + weight) {
         dist[vertex] = curr_weight + weight;
         prev[vertex] = curr_vertex;
         queue.UpdateWeight(vertex, dist[vertex]);

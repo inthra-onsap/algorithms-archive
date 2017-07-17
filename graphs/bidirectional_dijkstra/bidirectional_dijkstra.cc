@@ -59,7 +59,7 @@ void BidirectionalDijkstra::Relax(std::vector<std::vector<std::pair<int, int>>> 
                                   std::vector<bool> &visited,
                                   GraphMinHeap<int> &min_heap) {
   for (auto it = graph[vertex].begin(); it != graph[vertex].end(); ++it) {
-    if (!visited[it->first] && dist[it->first] > dist[vertex] + it->second) {
+    if (dist[it->first] > dist[vertex] + it->second) {
       dist[it->first] = dist[vertex] + it->second;
       prev[it->first] = vertex;
       min_heap.Upsert(it->first, dist[it->first]);
