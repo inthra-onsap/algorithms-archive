@@ -17,7 +17,6 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int terminal) {
   GraphMinHeap<int> queue;
   std::vector<int> dist(num_vertices, INT_MAX);
   std::vector<int> prev(num_vertices, -1);
-  std::vector<bool> visited(num_vertices, false);
   std::vector<int> shortest_path;
 
   queue.Insert(std::make_pair(source, 0));
@@ -32,7 +31,6 @@ std::vector<int> Dijkstra::GetShortestPath(int source, int terminal) {
     int curr_vertex = queue.GetMin().first;
     int curr_weight = queue.GetMin().second;
     queue.DeleteMin();
-    visited[curr_vertex] = true;
 
     for (auto it = adj_list[curr_vertex].begin(); it != adj_list[curr_vertex].end(); ++it) {
       int vertex = it->first;
