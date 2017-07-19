@@ -52,7 +52,7 @@ class SplayTree {
   }
 
   bool IsEmpty() {
-    return root == nullptr;
+    return (root == nullptr);
   }
 
   void Remove(const Comparable &value) {
@@ -96,9 +96,8 @@ class SplayTree {
       node->left = Clear(node->left);
       node->right = Clear(node->right);
       delete node;
-      node = nullptr;
     }
-    return node;
+    return nullptr;
   }
 
   SplayTreeNode<Comparable> *Find(const Comparable &value, SplayTreeNode<Comparable> *node) {
@@ -198,7 +197,7 @@ class SplayTree {
     }
     // Add new root
     SplayTreeNode<Comparable> *new_root = new SplayTreeNode<Comparable>{value};
-    if (curr_root->data > value) {
+    if (value < curr_root->data) {
       new_root->right = curr_root;
       new_root->left = curr_root->left;
       curr_root->left = nullptr;

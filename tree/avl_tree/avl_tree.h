@@ -193,9 +193,8 @@ class AvlTree {
       node->left = Clear(node->left);
       node->right = Clear(node->right);
       delete node;
-      node = nullptr;
     }
-    return node;
+    return nullptr;
   }
 
   AvlNode<Comparable> *Clone(const AvlNode<Comparable> *node) {
@@ -227,7 +226,7 @@ class AvlTree {
     } else if (node->left != nullptr && node->right != nullptr) {
       AvlNode<Comparable> *min_node = FindMin(node->right);
       node->data = min_node->data;
-      node->right = Remove(node->data, node->right);
+      node->right = Remove(min_node->data, node->right);
     } else {
       AvlNode<Comparable> *old_node = node;
       node = (node->left != nullptr) ? node->left : node->right;
