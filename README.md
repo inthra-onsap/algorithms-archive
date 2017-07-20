@@ -27,9 +27,10 @@
 #### Trees
 - [Binary Search Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/bst)
 - [AVL Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/avl_tree)
+- [Red-Black Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/redblack_tree)
 - [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/rope_string)
-- [Splay Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/splay_tree)
-- [Top-Down Splay Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/topdown_splay_tree)
+- [Splay Tree (Bottom-Up)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/splay_tree)
+- [Splay Tree (Top-Down)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/topdown_splay_tree)
 - [B-Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/b_tree)
 - [Binary Heap (Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_heap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)

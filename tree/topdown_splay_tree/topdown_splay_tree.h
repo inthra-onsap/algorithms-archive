@@ -68,8 +68,8 @@ class TopDownSplayTree {
   TopDownSplayTreeNode<Comparable> *Move(TopDownSplayTreeNode<Comparable> *&&node) {
     if (node == nullptr) return nullptr;
     return new TopDownSplayTreeNode<Comparable>{std::move(node->data),
-                                                Clone(std::move(node->left)),
-                                                Clone(std::move(node->right))};
+                                                Move(std::move(node->left)),
+                                                Move(std::move(node->right))};
   }
 
   TopDownSplayTreeNode<Comparable> *Clear(TopDownSplayTreeNode<Comparable> *node) {

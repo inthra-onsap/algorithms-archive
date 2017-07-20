@@ -1,3 +1,3 @@
-# Top-Down Splay Tree
+# Splay Tree (Top-Down)
 
 TBD.
