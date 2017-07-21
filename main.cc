@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "RedBlackTreeTest.ExpectRemoveRootElementOfTreeSuccess";
+  //testing::GTEST_FLAG(filter) = "RedBlackTreeTest.ExpectRemoveCase5RotateRightSuccess";
   return RUN_ALL_TESTS();
 }

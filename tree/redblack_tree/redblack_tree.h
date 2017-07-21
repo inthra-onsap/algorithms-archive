@@ -225,17 +225,18 @@ class RedBlackTree {
       node->data = successor->data;
       Remove(successor->data, node->right);
     } else {
-      RedBlackNode<Comparable> *deleted_node = node;
-      node = (node->left != nullptr) ? node->left : node->right;
-      if (node != nullptr) node->parent = deleted_node->parent;
-      if (IsBlack(deleted_node)) {
-        if (IsRed(node)) {
-          node->color = BLACK;
+      RedBlackNode<Comparable> *delete_node = node;
+      RedBlackNode<Comparable> *replace_node = (node->left != nullptr) ? node->left : node->right;
+      if (replace_node != nullptr) replace_node->parent = node->parent;
+      if (IsBlack(delete_node)) {
+        if (IsRed(replace_node)) {
+          replace_node->color = BLACK;
         } else {
-          RemoveCase1(deleted_node);
+          RemoveCase1(delete_node);
         }
       }
-      delete deleted_node;
+      node = replace_node;
+      delete delete_node;
     }
   }
 
@@ -248,9 +249,9 @@ class RedBlackTree {
     RedBlackNode<Comparable> *sibling = GetSibling(double_black);
     if (IsRed(sibling)) {
       if (double_black == double_black->parent->left) {
-        RotateRight(double_black->parent, true);
-      } else {
         RotateLeft(double_black->parent, true);
+      } else {
+        RotateRight(double_black->parent, true);
       }
       if (sibling->parent == nullptr) {
         root = sibling;
@@ -288,10 +289,10 @@ class RedBlackTree {
   void RemoveCase5(RedBlackNode<Comparable> *double_black) {
     RedBlackNode<Comparable> *sibling = GetSibling(double_black);
     if (IsBlack(sibling)) {
-      if (double_black == double_black->left && IsRed(sibling->left) && IsBlack(sibling->right)) {
+      if (double_black == double_black->parent->left && IsRed(sibling->left) && IsBlack(sibling->right)) {
         RotateRight(sibling, true);
       } else {
-        if (double_black == double_black->right && IsRed(sibling->right) && IsBlack(sibling->left)) {
+        if (double_black == double_black->parent->right && IsRed(sibling->right) && IsBlack(sibling->left)) {
           RotateLeft(sibling, true);
         }
       }
@@ -303,7 +304,7 @@ class RedBlackTree {
     RedBlackNode<Comparable> *sibling = GetSibling(double_black);
     sibling->color = sibling->parent->color;
     sibling->parent->color = BLACK;
-    if (double_black == double_black->left) {
+    if (double_black == double_black->parent->left) {
       sibling->right->color = BLACK;
       RotateLeft(sibling->parent, false);
     } else {

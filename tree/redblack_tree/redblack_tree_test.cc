@@ -159,14 +159,7 @@ TEST_F(RedBlackTreeTest, ExpectNotContainElementFail) {
   EXPECT_FALSE(tree.Contains(5));
 }
 
-TEST_F(RedBlackTreeTest, ExpectRemoveElementSuccess) {
-  RedBlackTree<int> tree;
-  tree.Insert(5);
-  tree.Remove(5);
-  EXPECT_TRUE(tree.IsEmpty());
-}
-
-TEST_F(RedBlackTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
+TEST_F(RedBlackTreeTest, ExpectRemoveRedNodeOnRightSideOfTreeSuccess) {
   RedBlackTree<int> tree;
   tree.Insert(5);
   tree.Insert(6);
@@ -176,7 +169,7 @@ TEST_F(RedBlackTreeTest, ExpectRemoveElementOnRightSideOfTreeSuccess) {
   EXPECT_FALSE(tree.Contains(7));
 }
 
-TEST_F(RedBlackTreeTest, ExpectRemoveElementOnLeftSideOfTreeSuccess) {
+TEST_F(RedBlackTreeTest, ExpectRemoveRedNodeOnLeftSideOfTreeSuccess) {
   RedBlackTree<int> tree;
   tree.Insert(7);
   tree.Insert(6);
@@ -197,6 +190,131 @@ TEST_F(RedBlackTreeTest, ExpectRemoveRootElementOfTreeSuccess) {
 
   EXPECT_TRUE(tree.Contains(6));
   EXPECT_TRUE(tree.Contains(7));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveBlankAndReplaceWithRedNodeSuccess) {
+  RedBlackTree<int> tree;
+  tree.Insert(10);
+  tree.Insert(20);
+  tree.Insert(30);
+  tree.Insert(25);
+
+  tree.Remove(25);
+  EXPECT_FALSE(tree.Contains(25));
+
+  const RedBlackNode<int> *root = tree.Find(20);
+  EXPECT_EQ(20, root->data);
+  EXPECT_EQ(BLACK, root->color);
+  const RedBlackNode<int> *left_child = root->left;
+  EXPECT_EQ(10, left_child->data);
+  EXPECT_EQ(BLACK, left_child->color);
+  const RedBlackNode<int> *right_child = root->right;
+  EXPECT_EQ(30, right_child->data);
+  EXPECT_EQ(BLACK, right_child->color);
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase1Success) {
+  RedBlackTree<int> tree;
+  tree.Insert(5);
+  tree.Remove(5);
+  EXPECT_TRUE(tree.IsEmpty());
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase2RotateRightAndCase4Success) {
+  RedBlackTree<int> tree;
+  tree.Insert(60);
+  tree.Insert(50);
+  tree.Insert(40);
+  tree.Insert(30);
+  tree.Insert(20);
+  tree.Insert(10);
+
+  tree.Remove(60);
+  EXPECT_FALSE(tree.Contains(60));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase2RotateLeftAndCase4Success) {
+  RedBlackTree<int> tree;
+  tree.Insert(10);
+  tree.Insert(20);
+  tree.Insert(30);
+  tree.Insert(40);
+  tree.Insert(50);
+  tree.Insert(60);
+
+  tree.Remove(10);
+  EXPECT_FALSE(tree.Contains(10));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase3RotateLeftAndCase4Success) {
+  RedBlackTree<int> tree;
+  tree.Insert(10);
+  tree.Insert(20);
+  tree.Insert(30);
+  tree.Insert(40);
+  tree.Insert(50);
+  tree.Insert(60);
+
+  tree.Remove(10);
+  EXPECT_FALSE(tree.Contains(10));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase3Success) {
+  RedBlackTree<int> tree;
+  tree.Insert(7);
+  tree.Insert(6);
+  tree.Insert(5);
+  tree.Insert(3);
+
+  tree.Remove(5);
+  tree.Remove(3);
+  EXPECT_FALSE(tree.Contains(5));
+  EXPECT_FALSE(tree.Contains(3));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase5RotateLeftSuccess) {
+  RedBlackTree<int> tree;
+  tree.Insert(70);
+  tree.Insert(60);
+  tree.Insert(50);
+  tree.Insert(55);
+
+  tree.Remove(70);
+  EXPECT_FALSE(tree.Contains(70));
+}
+
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase5RotateRightSuccess) {
+  RedBlackTree<int> tree;
+  tree.Insert(50);
+  tree.Insert(60);
+  tree.Insert(70);
+  tree.Insert(65);
+
+  tree.Remove(50);
+  EXPECT_FALSE(tree.Contains(50));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase6RotateRigthSuccess) {
+  RedBlackTree<int> tree;
+  tree.Insert(7);
+  tree.Insert(6);
+  tree.Insert(5);
+  tree.Insert(3);
+
+  tree.Remove(7);
+  EXPECT_FALSE(tree.Contains(7));
+}
+
+TEST_F(RedBlackTreeTest, ExpectRemoveCase6RotateLeftSuccess) {
+  RedBlackTree<int> tree;
+  tree.Insert(3);
+  tree.Insert(4);
+  tree.Insert(5);
+  tree.Insert(6);
+
+  tree.Remove(3);
+  EXPECT_FALSE(tree.Contains(3));
 }
 
 /**
