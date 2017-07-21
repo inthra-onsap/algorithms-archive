@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
- // testing::GTEST_FLAG(filter) = "TopDownSplayTreeTest.ExpectCopyAllElementsFromTreeSuccess";
+  //testing::GTEST_FLAG(filter) = "RedBlackTreeTest.ExpectRemoveRootElementOfTreeSuccess";
   return RUN_ALL_TESTS();
 }

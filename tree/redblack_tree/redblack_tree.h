@@ -27,8 +27,12 @@ class RedBlackTree {
     root = Clear(root);
   }
 
-  const RedBlackNode<Comparable> Find(const Comparable &value) {
+  const RedBlackNode<Comparable> *Find(const Comparable &value) {
     return Find(value, root);
+  }
+
+  bool Contains(const Comparable &value) {
+    return (Find(value, root) != nullptr);
   }
 
   void Clear() {
@@ -40,7 +44,8 @@ class RedBlackTree {
   }
 
   void Insert(const Comparable &value) {
-    Insert(value, root, nullptr);
+    RedBlackNode<Comparable> *new_node = Insert(value, root, nullptr);
+    Recolor(new_node);
   }
 
   void Remove(const Comparable &value) {
@@ -91,33 +96,30 @@ class RedBlackTree {
     }
   }
 
-  void Insert(const Comparable &value,
-              RedBlackNode<Comparable> *&node,
-              RedBlackNode<Comparable> *parent) {
+  RedBlackNode<Comparable> *Insert(const Comparable &value,
+                                   RedBlackNode<Comparable> *&node,
+                                   RedBlackNode<Comparable> *parent) {
     if (node == nullptr) {
       node = new RedBlackNode<Comparable>{value, nullptr, nullptr, parent, RED};
     } else {
       if (value < node->data) {
-        Insert(value, node->left, node);
-      } else if (value > node->data) {
-        Insert(value, node->right, node);
+        return Insert(value, node->left, node);
       } else {
-        // Todo: handle duplicate element
+        return Insert(value, node->right, node);
       }
     }
-    Recolor(node);
+    return node;
   }
 
-  void RotateLeft(RedBlackNode<Comparable> *&node, bool change_color) {
+  void RotateLeft(RedBlackNode<Comparable> *node, bool change_color) {
     RedBlackNode<Comparable> *root = node->right;
     RedBlackNode<Comparable> *node_parent = node->parent;
     node->right = root->left;
     root->left = node;
 
-    node->right->parent = node;
     node->parent = root;
     root->parent = node_parent;
-
+    if (node->right != nullptr) node->right->parent = node;
     if (node_parent != nullptr) {
       if (node == node_parent->left) node_parent->left = root;
       else node_parent->right = root;
@@ -128,16 +130,15 @@ class RedBlackTree {
     }
   }
 
-  void RotateRight(RedBlackNode<Comparable> *&node, bool change_color) {
+  void RotateRight(RedBlackNode<Comparable> *node, bool change_color) {
     RedBlackNode<Comparable> *root = node->left;
     RedBlackNode<Comparable> *node_parent = node->parent;
     node->left = root->right;
     root->right = node;
 
-    node->left->parent = node;
     node->parent = root;
     root->parent = node_parent;
-
+    if (node->left != nullptr) node->left->parent = node;
     if (node_parent != nullptr) {
       if (node == node_parent->left) node_parent->left = root;
       else node_parent->right = root;
@@ -148,7 +149,7 @@ class RedBlackTree {
     }
   }
 
-  void Rotate(RedBlackNode<Comparable> *&node) {
+  void Rotate(RedBlackNode<Comparable> *node) {
     if (node == node->parent->left) {
       if (node->parent == node->parent->parent->left) {
         // LL
@@ -170,28 +171,35 @@ class RedBlackTree {
     }
   }
 
-  void Recolor(RedBlackNode<Comparable> *&node) {
-    if (node->parent == nullptr) {
-      node->color = BLACK;
-      root = node;
-    } else {
-      if (IsRed(node) && IsRed(node->parent)) {
-        if (node->parent == node->parent->parent->left) {
-          if (IsBlack(node->parent->parent->right)) {
-            Rotate(node);
+  void Recolor(RedBlackNode<Comparable> *node) {
+    while (node != nullptr) {
+      if (node->parent == nullptr) {
+        node->color = BLACK;
+        root = node;
+        break;
+      } else {
+        if (IsRed(node) && IsRed(node->parent)) {
+          if (node->parent == node->parent->parent->left) {
+            if (IsBlack(node->parent->parent->right)) {
+              Rotate(node);
+            } else {
+              node->parent->parent->color = RED;
+              node->parent->color = BLACK;
+              node->parent->parent->right->color = BLACK;
+              node = node->parent->parent;
+            }
           } else {
-            node->parent->parent->color = RED;
-            node->parent->color = BLACK;
-            node->parent->parent->right->color = BLACK;
+            if (IsBlack(node->parent->parent->left)) {
+              Rotate(node);
+            } else {
+              node->parent->parent->color = RED;
+              node->parent->color = BLACK;
+              node->parent->parent->left->color = BLACK;
+              node = node->parent->parent;
+            }
           }
         } else {
-          if (IsBlack(node->parent->parent->left)) {
-            Rotate(node);
-          } else {
-            node->parent->parent->color = RED;
-            node->parent->color = BLACK;
-            node->parent->parent->left->color = BLACK;
-          }
+          node = node->parent;
         }
       }
     }
