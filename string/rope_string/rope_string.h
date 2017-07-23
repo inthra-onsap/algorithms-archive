@@ -9,7 +9,7 @@
 #include <algorithm>
 
 namespace algorithms_archive {
-namespace tree {
+namespace string {
 /**
  * 1-based index string class
  */
@@ -75,7 +75,7 @@ class RopeString {
 
   void Empty(RopeNode *&node);
 };
-} // namespace tree
+} // namespace string
 } // namespace algorithms_archive
 
 #endif //ALGORITHMS_ARCHIVE_ROPE_TREE_H_

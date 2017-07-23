@@ -1,7 +1,7 @@
 #include "rope_string.h"
 
 namespace algorithms_archive {
-namespace tree {
+namespace string {
 RopeString::RopeString() : root{nullptr} {
 }
 
@@ -259,5 +259,5 @@ void RopeString::Empty(RopeNode *&node) {
   delete node;
   node = nullptr;
 }
-} // namespace tree
+} // namespace string
 } // namespace algorithms_archive

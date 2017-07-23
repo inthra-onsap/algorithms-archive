@@ -35,7 +35,12 @@
 - [Treaps (Binary Tree + Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/treap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
-- [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/rope_string)
+
+#### String
+- [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rope_string)
+- [Burrow-Wheeler Transform](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/burrow_wheeler_transform)
+- [Suffix Array](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_array)
+- [Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
 
 #### Disjoint Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)

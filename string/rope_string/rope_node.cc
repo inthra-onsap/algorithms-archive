@@ -2,7 +2,7 @@
 #include <string>
 
 namespace algorithms_archive {
-namespace tree {
+namespace string {
 struct RopeNode {
   uint64_t weight;
   uint64_t length;
@@ -38,5 +38,5 @@ struct RopeNode {
         height{std::move(height_)} {
   }
 };
-} // namespace tree
+} // namespace string
 } // namespace algorithms_archive

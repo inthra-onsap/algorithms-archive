@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 
 namespace algorithms_archive {
-namespace tree {
+namespace string {
 class RopeStringTest : public testing::Test {
   virtual void SetUp() {}
 
