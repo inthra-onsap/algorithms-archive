@@ -1,4 +1,0 @@
-# Burrow-Wheeler Transform
-
-TBD.
-

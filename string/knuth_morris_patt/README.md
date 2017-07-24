@@ -1,0 +1,4 @@
+# Knuth-Morris-Patt
+
+TBD.
+

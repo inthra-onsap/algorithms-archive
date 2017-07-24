@@ -38,7 +38,7 @@
 
 #### String
 - [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rope_string)
-- [Burrow-Wheeler Transform](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/burrow_wheeler_transform)
+- [Knuth-Morris-Patt](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/knuth_morris_patt)
 - [Suffix Array](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_array)
 - [Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
 
