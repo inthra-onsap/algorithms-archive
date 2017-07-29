@@ -45,7 +45,8 @@ bool FordFulkerson::IsSinkReachable(
   return (prev[sink] != -1);
 }
 
-std::vector<std::vector<std::pair<int, int>>> FordFulkerson::GetResidualGraph(std::vector<std::vector<int>> &flow_graph) {
+std::vector<std::vector<std::pair<int,
+                                  int>>> FordFulkerson::GetResidualGraph(std::vector<std::vector<int>> &flow_graph) {
   std::vector<std::vector<std::pair<int, int>>> residual_graph(size, std::vector<std::pair<int, int>>());
   for (int v1 = 0; v1 < size; ++v1) {
     for (int v2 = 0; v2 < size; ++v2) {
@@ -65,7 +66,7 @@ int FordFulkerson::ProcessAugmentingPath(std::vector<std::vector<int>> &flow_gra
   while (sink != -1) {
     augmenting_path.push(sink);
     if (prev[sink] != -1)
-      min_flow = std::min(min_flow, graph[prev[sink]][sink]);
+      min_flow = std::min(min_flow, graph[prev[sink]][sink] - flow_graph[prev[sink]][sink]);
     sink = prev[sink];
   }
   v1 = augmenting_path.top();
