@@ -65,8 +65,13 @@ int FordFulkerson::ProcessAugmentingPath(std::vector<std::vector<int>> &flow_gra
   int v1, v2;
   while (sink != -1) {
     augmenting_path.push(sink);
-    if (prev[sink] != -1)
-      min_flow = std::min(min_flow, graph[prev[sink]][sink] - flow_graph[prev[sink]][sink]);
+    if (prev[sink] != -1) {
+      if (graph[prev[sink]][sink] > 0) {
+        min_flow = std::min(min_flow, graph[prev[sink]][sink] - flow_graph[prev[sink]][sink]);
+      } else {
+        min_flow = std::min(min_flow, flow_graph[sink][prev[sink]]);
+      }
+    }
     sink = prev[sink];
   }
   v1 = augmenting_path.top();
