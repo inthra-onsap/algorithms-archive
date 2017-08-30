@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "KnuthMorrisPattTest.ExpectReturnOccurrencesSuccess";
+  //testing::GTEST_FLAG(filter) = "GraphStronglyConnectedComponentTest.ExpectReturnNumberOfStronglyConnectedComponentCaseIISuccess";
   return RUN_ALL_TESTS();
 }
