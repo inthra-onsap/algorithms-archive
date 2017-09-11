@@ -17,11 +17,11 @@ class SegmentTree {
     BuildTree(0, original_arr.size() - 1, 0);
   }
 
-  int RangeQuery(int r_low, int r_high) {
+  Comparable RangeQuery(int r_low, int r_high) {
     return GetMinimumByRange(r_low, r_high, 0, original_arr.size() - 1, 0);
   }
 
-  void IncreaseValueByRange(int r_low, int r_high, int inc_value) {
+  void IncreaseValueByRange(int r_low, int r_high, Comparable inc_value) {
     LazyUpdateValueByRange(r_low, r_high, 0, original_arr.size() - 1, 0, inc_value);
   }
 
@@ -51,7 +51,7 @@ class SegmentTree {
     segment_tree[node] = std::min(segment_tree[LeftChild(node)], segment_tree[RightChild(node)]);
   }
 
-  int GetMinimumByRange(int r_low, int r_high, int curr_low, int curr_high, int node) {
+  Comparable GetMinimumByRange(int r_low, int r_high, int curr_low, int curr_high, int node) {
     if (carried_tree[node] != 0) {
       if (curr_low < curr_high) {
         carried_tree[LeftChild(node)] += carried_tree[node];
@@ -77,7 +77,7 @@ class SegmentTree {
     );
   }
 
-  void LazyUpdateValueByRange(int r_low, int r_high, int curr_low, int curr_high, int node, int value) {
+  void LazyUpdateValueByRange(int r_low, int r_high, int curr_low, int curr_high, int node, Comparable value) {
     if (carried_tree[node] != 0) {
       if (curr_low < curr_high) {
         carried_tree[LeftChild(node)] += carried_tree[node];
