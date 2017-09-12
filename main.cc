@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "BinaryIndexedTreeTest.ExpectSumByRangeReturnSuccess";
+  //testing::GTEST_FLAG(filter) = "SegmentTreeTest.ExpectSegmentTreeReturnMinElementByRangeQuerySuccess";
   return RUN_ALL_TESTS();
 }

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 namespace algorithms_archive {
 namespace tree {
@@ -12,8 +13,9 @@ class SegmentTree {
  public:
   SegmentTree(std::vector<Comparable> data)
       : original_arr{data} {
-    segment_tree.resize(original_arr.size() * 2);
-    carried_tree.resize(original_arr.size() * 2, 0);
+    int t_size = pow(2, log2(data.size()) + 1);
+    segment_tree.resize(t_size);
+    carried_tree.resize(t_size, 0);
     BuildTree(0, original_arr.size() - 1, 0);
   }
 
