@@ -83,17 +83,17 @@ TEST_F(TreapTest, ExpectClearAllElementsSuccess) {
 /**
  * Copy Constructor & Move Constructor Tests
  */
-TEST_F(TreapTest, ExpectCopyAllElementsFromTreeSuccess) {
-  Treap<int> treap;
-  treap.Insert(5);
-  treap.Insert(4);
-  treap.Insert(7);
-  Treap<int> new_treap = treap;
-
-  EXPECT_TRUE(new_treap.Contains(4));
-  EXPECT_TRUE(new_treap.Contains(5));
-  EXPECT_TRUE(new_treap.Contains(7));
-}
+//TEST_F(TreapTest, ExpectCopyAllElementsFromTreeSuccess) {
+//  Treap<int> treap;
+//  treap.Insert(5);
+//  treap.Insert(4);
+//  treap.Insert(7);
+//  Treap<int> new_treap = treap;
+//
+//  EXPECT_TRUE(new_treap.Contains(4));
+//  EXPECT_TRUE(new_treap.Contains(5));
+//  EXPECT_TRUE(new_treap.Contains(7));
+//}
 
 } // namespace tree
 } // namespace algorithms_archive

@@ -45,6 +45,7 @@
 - [Knuth-Morris-Patt](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/knuth_morris_patt)
 - [Suffix Array](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_array)
 - [Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
+- [Trie](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/trie)
 
 #### Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
