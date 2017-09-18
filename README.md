@@ -38,7 +38,7 @@
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
 - [Segment Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/segment_tree)
 - [Binary Indexed Tree (Fenwick Tree)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_index_tree)
-- [Least Common Ancestor (ver. DP)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/lca)
+- [Lowest Common Ancestor (ver. DP)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/lca)
 
 #### String
 - [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rope_string)
@@ -46,6 +46,6 @@
 - [Suffix Array](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_array)
 - [Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
 
-#### Disjoint Sets
+#### Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
 

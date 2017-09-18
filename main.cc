@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "LcaTests.ExpectLcaReturnCommonAncestorSuccess";
+  //testing::GTEST_FLAG(filter) = "TrieTest.ExpectSearchReturnUnknownWordAsFalseSuccess";
   return RUN_ALL_TESTS();
 }

@@ -1,3 +1,3 @@
-# Least Common Ancestor (ver. DP)
+# Lowest Common Ancestor (ver. DP)
 
 TBD.
