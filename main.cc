@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "SegmentTreeTest.ExpectSegmentTreeReturnMinElementByRangeQuerySuccess";
+  //testing::GTEST_FLAG(filter) = "LcaTests.ExpectLcaReturnCommonAncestorSuccess";
   return RUN_ALL_TESTS();
 }

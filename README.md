@@ -38,6 +38,7 @@
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
 - [Segment Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/segment_tree)
 - [Binary Indexed Tree (Fenwick Tree)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_index_tree)
+- [Longest Common Ancestor (ver. DP)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/lca)
 
 #### String
 - [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rope_string)
