@@ -44,8 +44,9 @@
 - [Rope Tree (RopeString)](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rope_string)
 - [Knuth-Morris-Patt](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/knuth_morris_patt)
 - [Suffix Array](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_array)
-- [Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
+- [Ukkonen's Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
 - [Trie](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/trie)
+- [Rabin Karp](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rabin_karp)
 
 #### Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
