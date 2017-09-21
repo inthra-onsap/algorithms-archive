@@ -12,8 +12,8 @@ long long RabinKarp::Hash(std::string str) {
 }
 
 long long RabinKarp::Rehash(long long hash, std::string str, int start, int length) {
-  if((start - 1) < 0){
-    return hash;
+  if(start == 0){
+    return Hash(str.substr(start, length));
   }
   return ((hash - str[start - 1]) / kPrimeNumber) +
       (str[start + length - 1] * std::pow(kPrimeNumber, length - 1));
@@ -26,7 +26,7 @@ std::vector<int> RabinKarp::PatternMatching(std::string pattern, std::string tex
   }
 
   long long hashed_pattern = Hash(pattern);
-  long long hashed_runner = Hash(text.substr(0, pattern.size()));
+  long long hashed_runner = 0;
   int l_limit = text.size() - pattern.size();
   for (int i = 0; i <= l_limit; ++i) {
     hashed_runner = Rehash(hashed_runner, text, i, pattern.length());
