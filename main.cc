@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "RabinKarpTest.ExpectPatternMatchingSuccess";
+  //testing::GTEST_FLAG(filter) = "FiniteAutomataTest.ExpectPatternMatchingSuccess";
   return RUN_ALL_TESTS();
 }

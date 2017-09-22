@@ -47,6 +47,7 @@
 - [Ukkonen's Suffix Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/suffix_tree)
 - [Trie](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/trie)
 - [Rabin Karp](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/rabin_karp)
+- [Finite Automata](https://github.com/inthra-onsap/algorithms-archive/tree/master/string/finite_automata)
 
 #### Sets
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)

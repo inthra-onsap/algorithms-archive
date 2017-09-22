@@ -30,6 +30,13 @@ TEST_F(RabinKarpTest, ExpectPatternMatchingPrfixAndSuffixSuccess){
   EXPECT_EQ(4, occur[1]);
 }
 
+TEST_F(RabinKarpTest, ExpectPatternMatchingWholeStringSuccess){
+  RabinKarp rk;
+  std::vector<int> occur = rk.PatternMatching("AB", "AB");
+
+  EXPECT_EQ(0, occur[0]);
+}
+
 TEST_F(RabinKarpTest, ExpectPatternNoMatchingSuccess){
   RabinKarp rk;
   std::vector<int> occur = rk.PatternMatching("AAA", "BBBBBB");
