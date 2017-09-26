@@ -34,6 +34,7 @@ void BucketSort(std::vector<Comparable> &container) {
   Comparable max = *std::max_element(container.begin(), container.end());
   std::vector<std::vector<Comparable>> bucket(num_buckets, std::vector<Comparable>());
   int divider = std::ceil(float((max + 1.0) / num_buckets));
+
   for (int i = 0; i < container.size(); ++i) {
     pos = std::floor(container[i] / divider);
     bucket[pos].push_back(container[i]);
@@ -41,6 +42,7 @@ void BucketSort(std::vector<Comparable> &container) {
   for (int i = 0; i < bucket.size(); ++i) {
     InsertionSortInternal(bucket[i]);
   }
+
   pos = 0;
   for (int i = 0; i < bucket.size(); ++i) {
     for (int j = 0; j < bucket[i].size(); ++j) {
