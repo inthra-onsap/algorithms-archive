@@ -2,7 +2,7 @@
 
 TBD.
 
-####References
+#### References
 
-[geeksforgeeks.com](www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-1)
-[stackoverflow.com](stackoverflow.com/questions/9452701/ukkonens-suffix-tree-algorithm-in-plain-english)
+- [geeksforgeeks.com](www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-1)
+- [stackoverflow.com](stackoverflow.com/questions/9452701/ukkonens-suffix-tree-algorithm-in-plain-english)
