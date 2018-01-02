@@ -1,5 +1,6 @@
 # Mac Os Files
 .idea/
+.DS_Store
 
 # Built Files
 cmake-build-debug/
