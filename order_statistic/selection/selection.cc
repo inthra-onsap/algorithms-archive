@@ -20,6 +20,5 @@ TEST(SelectionTest, ExpectPick5thSmallestElementButReturnFirstElementWhenTheInde
 
   EXPECT_EQ(1, selection.randomizedSelect(data, 0, data.size()-1, 5));
 }
-
 } // namespace order_statistic
 } // namespace algorithms_archive
