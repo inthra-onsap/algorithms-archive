@@ -54,4 +54,4 @@
 - [Disjoint Sets](https://github.com/inthra-onsap/algorithms-archive/tree/master/disjoint_sets/disjoint_sets)
 
 #### Order Statistic
-- [Distinct Element Selection Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/order_statistic/selection)
+- [ith Selection Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/order_statistic/selection)
