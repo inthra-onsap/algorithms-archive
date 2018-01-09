@@ -47,8 +47,10 @@ void Trie::Delete(std::string &word) {
         break;
       } else if (idx == word.length()) {
         curr->end_word = false;
-      } else if (curr->node_map[word[idx]]) {
-        curr->node_map.erase(word[idx]);
+      } else {
+        if (curr->node_map[word[idx]]) {
+          curr->node_map.erase(word[idx]);
+        }
       }
 
       if (curr->node_map.size() == 0) {

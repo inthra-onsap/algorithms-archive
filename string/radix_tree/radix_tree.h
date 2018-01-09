@@ -3,6 +3,7 @@
 
 #include "trie_node.cc"
 
+#include <stack>
 #include <string>
 
 namespace algorithms_archive {
@@ -52,46 +53,65 @@ class RadixTree {
       }
 
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = 0;
-      while (match_len < curr_node->data.size() && curr_node->data[match_len] == word[curr_idx])
-        ++curr_idx, ++match_len;
+      match_len = matchLength(curr_idx, curr_node->label, word);
+      curr_idx += match_len;
 
-      if (match_len < curr_node->data.size()) {
-        TrieNode *tmp = new TrieNode(curr_node->data.substr(match_len), curr_node->maps);
+      if (match_len < curr_node->label.length()) {
+        TrieNode *tmp = new TrieNode(curr_node->label.substr(match_len), curr_node->maps);
         curr_node->maps.clear();
-        curr_node->maps[tmp->data[0]] = tmp;
+        curr_node->maps[tmp->label[0]] = tmp;
         curr_node->maps[word[curr_idx]] = new TrieNode(word.substr(curr_idx));
-        curr_node->data = curr_node->data.substr(0, match_len);
+        curr_node->label = curr_node->label.substr(0, match_len);
         break;
       }
     }
 
   }
+
   void Delete(std::string word) {
+    std::stack<TrieNode *> st;
     TrieNode *curr_node = root;
-    TrieNode *prev_node = nullptr;
-    int prev_idx;
     int curr_idx = 0;
     int match_len;
 
-    while (curr_idx < word.length()) {
-      if (!curr_node->maps[word[curr_idx]])
-        break;
-
-      prev_node = curr_node;
-      prev_idx = curr_idx;
+    st.push(curr_node);
+    while (curr_idx < word.length() && curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = 0;
-      while (match_len < curr_node->data.size() && curr_node->data[match_len] == word[curr_idx])
-        ++curr_idx, ++match_len;
+      match_len = matchLength(curr_idx, curr_node->label, word);
+      curr_idx += match_len;
+      st.push(curr_node);
 
-      if (match_len < curr_node->data.size())
+      if (match_len < curr_node->label.length())
         break;
     }
 
-    if (curr_idx == word.size()) {
-      delete curr_node;
-      prev_node->maps.erase(word[prev_idx]);
+    if (curr_idx == word.length()) {
+      while (!st.empty()) {
+        curr_node = st.top();
+        st.pop();
+
+        if (curr_node == root) {
+          curr_node->maps.erase(word[0]);
+          break;
+        } else {
+          if (curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
+            curr_node->maps.erase(word[curr_idx]);
+          }
+        }
+
+        if (curr_node->maps.size() == 0) {
+          curr_idx -= curr_node->label.length();
+          delete curr_node;
+        } else if (curr_node->maps.size() == 1) {
+          std::pair<char, TrieNode *> only_child = *(curr_node->maps.begin());
+          curr_node->maps.erase(only_child.first);
+          curr_node->label += only_child.second->label;
+          delete only_child.second;
+          break;
+        } else {
+          break;
+        }
+      }
     }
   }
 
@@ -100,20 +120,24 @@ class RadixTree {
     int curr_idx = 0;
     int match_len;
 
-    while (curr_idx < word.length()) {
-      if (!curr_node->maps[word[curr_idx]])
-        break;
-
+    while (curr_idx < word.length() && curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = 0;
-      while (match_len < curr_node->data.size() && curr_node->data[match_len] == word[curr_idx])
-        ++curr_idx, ++match_len;
+      match_len = matchLength(curr_idx, curr_node->label, word);
+      curr_idx += match_len;
 
-      if (match_len < curr_node->data.size())
+      if (match_len < curr_node->label.length())
         break;
     }
 
     return (curr_idx == word.size());
+  }
+
+  int matchLength(int start_idx, std::string &label, std::string &word) {
+    int match_len = 0;
+    while (match_len < label.length() && label[match_len] == word[start_idx + match_len])
+      ++match_len;
+
+    return match_len;
   }
 };
 
