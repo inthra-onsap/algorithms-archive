@@ -75,7 +75,7 @@ class RadixTree {
     int match_len;
 
     st.push(curr_node);
-    while (curr_idx < word.length() && curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
+    while (curr_idx < word.length() && curr_node->maps.count(word[curr_idx])) {
       curr_node = curr_node->maps[word[curr_idx]];
       match_len = matchLength(curr_idx, curr_node->label, word);
       curr_idx += match_len;
@@ -94,7 +94,7 @@ class RadixTree {
           curr_node->maps.erase(word[0]);
           break;
         } else {
-          if (curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
+          if (curr_node->maps.count(word[curr_idx])) {
             curr_node->maps.erase(word[curr_idx]);
           }
         }
@@ -120,7 +120,7 @@ class RadixTree {
     int curr_idx = 0;
     int match_len;
 
-    while (curr_idx < word.length() && curr_node->maps.find(word[curr_idx]) != curr_node->maps.end()) {
+    while (curr_idx < word.length() && curr_node->maps.count(word[curr_idx])) {
       curr_node = curr_node->maps[word[curr_idx]];
       match_len = matchLength(curr_idx, curr_node->label, word);
       curr_idx += match_len;

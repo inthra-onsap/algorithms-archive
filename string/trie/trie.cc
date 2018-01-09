@@ -15,7 +15,7 @@ void Trie::Clear(TrieNode *node) {
 void Trie::Insert(std::string &word) {
   TrieNode *curr = root;
   for (int i = 0; i < word.length(); ++i) {
-    if (!curr->node_map[word[i]]) {
+    if (!curr->node_map.count(word[i])) {
       curr->node_map[word[i]] = new TrieNode{};
     }
     curr = curr->node_map[word[i]];
@@ -29,7 +29,7 @@ void Trie::Delete(std::string &word) {
 
   st.push(curr);
   for (int i = 0; i < word.length(); ++i) {
-    if (!curr->node_map[word[i]]) {
+    if (!curr->node_map.count(word[i])) {
       return;
     }
     curr = curr->node_map[word[i]];
@@ -48,7 +48,7 @@ void Trie::Delete(std::string &word) {
       } else if (idx == word.length()) {
         curr->end_word = false;
       } else {
-        if (curr->node_map[word[idx]]) {
+        if (curr->node_map.count(word[idx])) {
           curr->node_map.erase(word[idx]);
         }
       }
@@ -66,7 +66,7 @@ void Trie::Delete(std::string &word) {
 TrieNode *Trie::Find(std::string &word) {
   TrieNode *curr = root;
   for (int i = 0; i < word.length(); ++i) {
-    if (curr->node_map[word[i]]) {
+    if (curr->node_map.count(word[i])) {
       curr = curr->node_map[word[i]];
     } else {
       return nullptr;
