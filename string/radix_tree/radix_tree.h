@@ -104,7 +104,7 @@ class RadixTree {
           delete curr_node;
         } else if (curr_node->maps.size() == 1) {
           std::pair<char, TrieNode *> only_child = *(curr_node->maps.begin());
-          curr_node->maps.erase(only_child.first);
+          curr_node->maps = std::move(only_child.second->maps);
           curr_node->label += only_child.second->label;
           delete only_child.second;
           break;
