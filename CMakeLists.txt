@@ -117,7 +117,7 @@ set(SOURCE_FILES
         string/radix_tree/trie_node.cc
         string/suffix_tree/suffix_node.cc
         order_statistic/selection/selection.h
-        order_statistic/selection/selection_test.cc)
+        order_statistic/selection/selection_test.cc string/binary_radix_tree/binary_radix_tree.cc string/binary_radix_tree/binary_radix_tree.h string/binary_radix_tree/binary_redix_tree_test.cc)
 
 add_executable(algorithms_archive ${SOURCE_FILES})
 target_link_libraries(algorithms_archive gtest gtest_main)

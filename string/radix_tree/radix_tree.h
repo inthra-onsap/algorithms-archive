@@ -53,7 +53,7 @@ class RadixTree {
       }
 
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = matchLength(curr_idx, curr_node->label, word);
+      match_len = prefixLength(curr_idx, curr_node->label, word);
       curr_idx += match_len;
 
       if (match_len < curr_node->label.length()) {
@@ -77,7 +77,7 @@ class RadixTree {
     st.push(curr_node);
     while (curr_idx < word.length() && curr_node->maps.count(word[curr_idx])) {
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = matchLength(curr_idx, curr_node->label, word);
+      match_len = prefixLength(curr_idx, curr_node->label, word);
       curr_idx += match_len;
       st.push(curr_node);
 
@@ -122,7 +122,7 @@ class RadixTree {
 
     while (curr_idx < word.length() && curr_node->maps.count(word[curr_idx])) {
       curr_node = curr_node->maps[word[curr_idx]];
-      match_len = matchLength(curr_idx, curr_node->label, word);
+      match_len = prefixLength(curr_idx, curr_node->label, word);
       curr_idx += match_len;
 
       if (match_len < curr_node->label.length())
@@ -132,7 +132,7 @@ class RadixTree {
     return (curr_idx == word.size());
   }
 
-  int matchLength(int start_idx, std::string &label, std::string &word) {
+  int prefixLength(int start_idx, std::string &label, std::string &word) {
     int match_len = 0;
     while (match_len < label.length() && label[match_len] == word[start_idx + match_len])
       ++match_len;
