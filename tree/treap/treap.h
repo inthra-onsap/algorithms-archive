@@ -102,6 +102,7 @@ class Treap {
     if (node == nullptr) {
       return new TreapNode<Comparable>{value, RandomInt(), nullptr, nullptr};
     }
+
     if (value < node->data) {
       node->left = Insert(value, node->left);
       if (node->left->priority < node->priority) {
@@ -112,9 +113,9 @@ class Treap {
       if (node->right->priority < node->priority) {
         return RotateLeft(node);
       }
-    } else {
-      return node;
     }
+
+    return node;
   }
 
   TreapNode<Comparable> *Remove(const Comparable &value, TreapNode<Comparable> *node) {
