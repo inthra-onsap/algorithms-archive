@@ -34,6 +34,7 @@
 - [B-Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/b_tree)
 - [Binary Heap (Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_heap)
 - [Treaps (Binary Tree + Min-Heap)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/treap)
+- [Implicit Treaps](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/implicit_treap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
 - [Segment Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/segment_tree)

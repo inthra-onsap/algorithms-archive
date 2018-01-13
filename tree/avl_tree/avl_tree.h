@@ -92,6 +92,7 @@ class AvlTree {
   AvlNode<Comparable> *Rebalance(AvlNode<Comparable> *node) {
     if (node == nullptr) return nullptr;
     node->height = MaxHeight(node);
+
     if (BalanceFactor(node) == LEFT_HEAVY) {
       if (Height(node->left->right) > Height(node->left->left)) {
         return RotateLeftRight(node);

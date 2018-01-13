@@ -1,3 +1,3 @@
-# Tries
+# Treap
 
 TBD.
