@@ -93,10 +93,6 @@ class ImplicitTreap {
     return root == nullptr;
   }
 
-  void Clear() {
-
-  }
-
   std::vector<Comparable> ToVector() {
     std::vector<Comparable> result;
     InorderTraverse(root, result);
@@ -133,6 +129,7 @@ class ImplicitTreap {
   }
 
   Comparable NodeSum(ImplicitTreapNode<Comparable> *node) {
+    LazyPropagate(node);
     return (node != nullptr) ? node->sum : 0;
   }
 

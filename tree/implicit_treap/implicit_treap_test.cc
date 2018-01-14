@@ -114,23 +114,25 @@ TEST_F(ImplicitTreapTest, ExpectGetMethodThrowErrorWhenAccessExceedSizeSucess) {
 /**
  * RangeQuery() Tests
  */
-TEST_F(ImplicitTreapTest, ExpectRangeSumFrom1To5Success) {
+TEST_F(ImplicitTreapTest, ExpectRangeSumFrom1Length5Success) {
   ImplicitTreap<int> treap({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+
   EXPECT_EQ(20, treap.RangeQuery(1, 5));
   EXPECT_EQ(9, treap.RangeQuery(8, 1));
+  EXPECT_EQ(10, treap.Size());
 }
-
 
 /**
  * RangeUpdate() Tests
  */
-TEST_F(ImplicitTreapTest, ExpectRangeUpdateFrom1To5Success) {
+TEST_F(ImplicitTreapTest, ExpectRangeUpdateFrom1Length5Success) {
   ImplicitTreap<int> treap({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
   treap.RangeUpdate(1, 5, 1);
   treap.RangeUpdate(8, 1, 1);
 
   EXPECT_EQ(25, treap.RangeQuery(1, 5));
   EXPECT_EQ(10, treap.RangeQuery(8, 1));
+  EXPECT_EQ(10, treap.Size());
 }
 
 } // namespace tree

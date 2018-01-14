@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  // testing::GTEST_FLAG(filter) = "ImplicitTreapTest.ExpectRangeSumFrom1To5Success";
+  // testing::GTEST_FLAG(filter) = "ImplicitTreapTest.ExpectRangeUpdateFrom1Length5Success";
   return RUN_ALL_TESTS();
 }
