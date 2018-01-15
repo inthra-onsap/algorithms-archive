@@ -21,6 +21,10 @@ class ImplicitTreap {
     Treapify(keys);
   }
 
+  ~ImplicitTreap(){
+    Clear(root);
+  }
+
   void init() {
     root = nullptr;
     generator.seed(random_dev());
@@ -109,6 +113,16 @@ class ImplicitTreap {
   std::random_device random_dev;
   std::mt19937 generator;
   std::uniform_int_distribution<int> distributor;
+
+
+  void Clear(ImplicitTreapNode<Comparable> *&node){
+    if(node == nullptr) return;
+
+    Clear(node->left);
+    Clear(node->right);
+    delete node;
+    node = nullptr;
+  }
 
   int NodeSize(ImplicitTreapNode<Comparable> *node) {
     return (node != nullptr) ? node->size : 0;
