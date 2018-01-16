@@ -99,6 +99,7 @@ class ImplicitTreap {
 
   std::vector<Comparable> ToVector() {
     std::vector<Comparable> result;
+    result.reserve(size);
     InorderTraverse(root, result);
     return result;
   }
