@@ -271,6 +271,8 @@ class SplayTree {
         SplayTreeNode<Comparable> *new_root = FindMin(find_node->right);
         if (new_root->parent != find_node) {
           new_root->parent->left = new_root->right;
+          new_root->right->parent = new_root->parent;
+
           new_root->right = find_node->right;
           new_root->right->parent = new_root;
         }
