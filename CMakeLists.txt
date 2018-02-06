@@ -117,7 +117,7 @@ set(SOURCE_FILES
         string/radix_tree/trie_node.cc
         string/suffix_tree/suffix_node.cc
         order_statistic/selection/selection.h
-        order_statistic/selection/selection_test.cc "tree/implicit_treap/implicit_treap_node.cc" "tree/implicit_treap/implicit_treap.h" "tree/implicit_treap/implicit_treap_test.cc")
+        order_statistic/selection/selection_test.cc "tree/implicit_treap/implicit_treap_node.cc" "tree/implicit_treap/implicit_treap.h" "tree/implicit_treap/implicit_treap_test.cc" tree/fibonacci_heap/fibonacci_heap.h tree/fibonacci_heap/fibonacci_heap_test.cc tree/fibonacci_heap/fibonacci_heap_node.cc)
 
 add_executable(algorithms_archive ${SOURCE_FILES})
 target_link_libraries(algorithms_archive gtest gtest_main)

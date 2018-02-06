@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "RedBlackTreeTest.ExpectTreeHandleRightBlackSiblingRightLeftCaseAndRotateLeftRightSuccess";
+  //testing::GTEST_FLAG(filter) = "FibonacciHeapTest.ExpectDeleteNodeSuccess";
   return RUN_ALL_TESTS();
 }

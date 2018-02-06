@@ -137,6 +137,7 @@ class BTree {
       return;
     }
     int key_index = node->HasKey(value);
+
     if (node->IsLeaf()) {
       if (key_index != -1) {
         node->RemoveAt(key_index);

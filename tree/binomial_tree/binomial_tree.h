@@ -78,6 +78,7 @@ class BinomialTree {
 
     BinomialTree<Comparable> new_tree;
     new_tree.tree.resize(min_index);
+
     new_tree.number_of_nodes = (1 << min_index) - 1;
     for (int i = (min_index - 1); i >= 0; --i) {
       new_tree.tree[i] = deleted_child;
@@ -99,6 +100,7 @@ class BinomialTree {
       tree.resize(new_size, nullptr);
     }
     BinomialHeapNode<Comparable> *prev_heap = nullptr;
+
     for (int i = 0; i < tree.size(); ++i) {
       BinomialHeapNode<Comparable> *heap1 = tree[i];
       BinomialHeapNode<Comparable> *heap2 = (i < rhs.tree.size()) ? rhs.tree[i] : nullptr;

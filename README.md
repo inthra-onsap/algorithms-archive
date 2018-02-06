@@ -37,6 +37,7 @@
 - [Implicit Treaps](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/implicit_treap)
 - [Leftist Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/leftist_heap)
 - [Binomial Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binomial_tree)
+- [Fibonacci Heap](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/fibonacci_heap)
 - [Segment Tree](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/segment_tree)
 - [Binary Indexed Tree (Fenwick Tree)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/binary_index_tree)
 - [Lowest Common Ancestor (ver. DP)](https://github.com/inthra-onsap/algorithms-archive/tree/master/tree/lca)
