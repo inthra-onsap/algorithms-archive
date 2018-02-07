@@ -152,7 +152,7 @@ class FibonacciHeap {
   }
 
   void Consolidate() {
-    std::vector<FibonacciHeapNode<Comparable> *> degree_vec(std::ceil(std::log2(size)), nullptr);
+    std::vector<FibonacciHeapNode<Comparable> *> degree_vec(std::ceil(std::log2(size)) + 1, nullptr);
     std::vector<FibonacciHeapNode<Comparable> *> tree_vec;
     FibonacciHeapNode<Comparable> *curr_heap = root_list, *tmp_heap;
     int degree;
@@ -167,7 +167,7 @@ class FibonacciHeap {
       curr_heap = tree_vec[i];
       degree = curr_heap->degree;
 
-      while (degree_vec[degree] != nullptr) {
+      while (degree_vec[degree]) {
         tmp_heap = degree_vec[degree];
         Link(tmp_heap, curr_heap);
         degree_vec[degree] = nullptr;
@@ -231,12 +231,13 @@ class FibonacciHeap {
   }
 
   void CascadingCut(FibonacciHeapNode<Comparable> *node) {
-    if (node->parent != nullptr) {
+    FibonacciHeapNode<Comparable> *parent = node->parent;
+    if (parent != nullptr) {
       if (node->mark == false) {
         node->mark = true;
       } else {
-        Cut(node, node->parent);
-        CascadingCut(node->parent);
+        Cut(node, parent);
+        CascadingCut(parent);
       }
     }
   }

@@ -92,78 +92,90 @@ TEST_F(FibonacciHeapTest, ExpectDeleteNodeSuccess) {
   EXPECT_TRUE(fibo_heap.IsEmpty());
 }
 
+/**
+ * DecreaseKey() & Find() Tests
+ */
+TEST_F(FibonacciHeapTest, ExpectDecreaseKeyAsFirstMininumSuccess) {
+  FibonacciHeap<int> fibo_heap;
+  fibo_heap.Insert(3);
+  fibo_heap.Insert(5);
+  fibo_heap.Insert(7);
+  fibo_heap.Insert(8);
+  fibo_heap.Insert(10);
+  fibo_heap.Insert(11);
 
-///**
-// * Merge() Tests
-// */
-//TEST_F(FibonacciHeapTest, ExpectMergeTreeSuccess) {
-//  BinomialTree<int> binomial_tree1;
-//  BinomialTree<int> binomial_tree2;
-//  binomial_tree1.Insert(1);
-//  binomial_tree1.Insert(2);
-//  binomial_tree1.Insert(3);
-//  binomial_tree2.Insert(10);
-//  binomial_tree2.Insert(11);
-//  binomial_tree2.Insert(12);
-//  binomial_tree2.Insert(13);
-//  binomial_tree2.Insert(14);
-//  binomial_tree2.Insert(15);
-//  binomial_tree1.Merge(binomial_tree2);
-//
-//  EXPECT_TRUE(binomial_tree2.IsEmpty());
-//  EXPECT_EQ(1, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(2, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(3, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(10, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(11, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(12, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(13, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(14, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_EQ(15, binomial_tree1.FindMin());
-//  binomial_tree1.DeleteMin();
-//  EXPECT_TRUE(binomial_tree1.IsEmpty());
-//}
-//
-///**
-// * Copy Constructor & Move Constructor Tests
-// */
-//TEST_F(FibonacciHeapTest, ExpectCopyConstructorSuccess) {
-//  BinomialTree<int> binomial_tree;
-//  binomial_tree.Insert(1);
-//  binomial_tree.Insert(3);
-//  binomial_tree.Insert(5);
-//  BinomialTree<int> binomial_tree2 = binomial_tree;
-//  EXPECT_EQ(1, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_EQ(3, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_EQ(5, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_TRUE(binomial_tree2.IsEmpty());
-//}
-//
-//TEST_F(FibonacciHeapTest, ExpectMoveConstructorSuccess) {
-//  BinomialTree<int> binomial_tree;
-//  binomial_tree.Insert(1);
-//  binomial_tree.Insert(3);
-//  binomial_tree.Insert(5);
-//  BinomialTree<int> binomial_tree2 = std::move(binomial_tree);
-//  EXPECT_EQ(1, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_EQ(3, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_EQ(5, binomial_tree2.FindMin());
-//  binomial_tree2.DeleteMin();
-//  EXPECT_TRUE(binomial_tree2.IsEmpty());
-//}
+  fibo_heap.DecreaseKey(fibo_heap.Find(11), 1);
+  EXPECT_EQ(nullptr, fibo_heap.Find(11));
+  EXPECT_EQ(1, fibo_heap.GetMinimum());
+}
+
+TEST_F(FibonacciHeapTest, ExpectDecreaseKeyAsSecondMininumSuccess) {
+  FibonacciHeap<int> fibo_heap;
+  fibo_heap.Insert(3);
+  fibo_heap.Insert(5);
+  fibo_heap.Insert(7);
+  fibo_heap.Insert(8);
+  fibo_heap.Insert(10);
+  fibo_heap.Insert(11);
+
+  fibo_heap.DecreaseKey(fibo_heap.Find(11), 4);
+  EXPECT_EQ(nullptr, fibo_heap.Find(11));
+  EXPECT_EQ(3, fibo_heap.ExtractMin());
+  EXPECT_EQ(4, fibo_heap.ExtractMin());
+}
+
+TEST_F(FibonacciHeapTest, ExpectDecreaseKeyAndCascadingCutSuccess) {
+  FibonacciHeap<int> fibo_heap;
+  fibo_heap.Insert(1);
+  fibo_heap.Insert(3);
+  fibo_heap.Insert(5);
+  fibo_heap.Insert(7);
+  fibo_heap.Insert(8);
+  fibo_heap.Insert(10);
+  fibo_heap.Insert(11);
+  fibo_heap.Insert(12);
+  fibo_heap.Insert(13);
+  fibo_heap.Insert(14);
+  fibo_heap.Insert(15);
+  EXPECT_EQ(1, fibo_heap.ExtractMin());
+
+  fibo_heap.DecreaseKey(fibo_heap.Find(12), 1);
+  EXPECT_EQ(1, fibo_heap.ExtractMin());
+  fibo_heap.DecreaseKey(fibo_heap.Find(14), 1);
+  EXPECT_EQ(1, fibo_heap.ExtractMin());
+  fibo_heap.DecreaseKey(fibo_heap.Find(13), 1);
+  EXPECT_EQ(1, fibo_heap.ExtractMin());
+}
+
+/**
+ * Union() Tests
+ */
+TEST_F(FibonacciHeapTest, ExpectUnion2HeapsSuccess) {
+  FibonacciHeap<int> fibo_heap1;
+  FibonacciHeap<int> fibo_heap2;
+  fibo_heap1.Insert(1);
+  fibo_heap1.Insert(2);
+  fibo_heap1.Insert(3);
+  fibo_heap2.Insert(10);
+  fibo_heap2.Insert(11);
+  fibo_heap2.Insert(12);
+  fibo_heap2.Insert(13);
+  fibo_heap2.Insert(14);
+  fibo_heap2.Insert(15);
+  fibo_heap1.Union(fibo_heap2);
+
+  EXPECT_TRUE(fibo_heap2.IsEmpty());
+  EXPECT_EQ(1, fibo_heap1.ExtractMin());
+  EXPECT_EQ(2, fibo_heap1.ExtractMin());
+  EXPECT_EQ(3, fibo_heap1.ExtractMin());
+  EXPECT_EQ(10, fibo_heap1.ExtractMin());
+  EXPECT_EQ(11, fibo_heap1.ExtractMin());
+  EXPECT_EQ(12, fibo_heap1.ExtractMin());
+  EXPECT_EQ(13, fibo_heap1.ExtractMin());
+  EXPECT_EQ(14, fibo_heap1.ExtractMin());
+  EXPECT_EQ(15, fibo_heap1.ExtractMin());
+  EXPECT_TRUE(fibo_heap1.IsEmpty());
+}
 
 } // namespace tree
 } // namespace algorithms_archive
