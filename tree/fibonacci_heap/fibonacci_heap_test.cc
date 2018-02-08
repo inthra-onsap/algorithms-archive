@@ -147,6 +147,16 @@ TEST_F(FibonacciHeapTest, ExpectDecreaseKeyAndCascadingCutSuccess) {
   EXPECT_EQ(1, fibo_heap.ExtractMin());
 }
 
+TEST_F(FibonacciHeapTest, ExpectDecreaseKeyThrowsInvalidArgumentSuccess) {
+  FibonacciHeap<int> fibo_heap;
+  fibo_heap.Insert(1);
+
+  EXPECT_THROW(
+      fibo_heap.DecreaseKey(fibo_heap.Find(1), std::numeric_limits<int>::max()),
+      std::invalid_argument
+  );
+}
+
 /**
  * Union() Tests
  */
