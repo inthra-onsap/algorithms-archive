@@ -15,8 +15,8 @@ class DisjointSets {
 
   /**
    * Keep sizes of each tree in negative number
-   * Find size by abs(set[i] - (-1))
-   * Ex. If root set[1] = -4 then the set[1] has size 3
+   * Find size by abs(set[i] + (-1))
+   * Ex. If root set[i] = -4 then the set[i] has size 4
    * @param int root1
    * @param int root2
    */

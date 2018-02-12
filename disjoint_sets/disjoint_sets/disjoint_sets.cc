@@ -13,6 +13,10 @@ const int DisjointSets::Find(const int idx) {
 void DisjointSets::UnionBySize(int set1, int set2) {
   int root1 = Find(set1);
   int root2 = Find(set2);
+  if(root1 == root2){
+    return;
+  }
+
   if (set[root2] < set[root1]) {
     set[root2] += set[root1];
     set[root1] = root2;
