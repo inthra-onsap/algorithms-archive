@@ -14,7 +14,12 @@ int Kruskal::GetMinimumSpaningValue() {
 
   for (int i = 0; i < num_vertex; ++i) {
     for (auto it = graph[i].begin(); it != graph[i].end(); ++it) {
-      min_heap.Insert(std::make_pair(std::make_pair(i, it->first), it->second));
+      min_heap.Insert(
+          std::make_pair(
+              std::make_pair(i, it->first),
+              it->second
+          )
+      );
     }
   }
 
