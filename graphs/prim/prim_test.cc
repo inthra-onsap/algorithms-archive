@@ -21,7 +21,8 @@ TEST_F(PrimTest, ExpectReturnTheMininumSpaningValueSuccess) {
   graph.AddEdge(2, 5, 1);
   graph.AddEdge(3, 4, 3);
   graph.AddEdge(4, 5, 9);
-  graph.GetMinimumSpaningValue();
+
+  EXPECT_EQ(14, graph.GetMinimumSpaningValue());
 }
 
 } // namespace graphs

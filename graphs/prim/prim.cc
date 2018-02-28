@@ -25,9 +25,8 @@ int Prim::GetMinimumSpaningValue() {
     visited[min_vertex] = true;
 
     for (auto it = graph[min_vertex].begin(); it != graph[min_vertex].end(); ++it) {
-      if (!visited[it->first] ||
-          dist[it->first] > dist[min_vertex] + it->second) {
-        dist[it->first] = dist[min_vertex] + it->second;
+      if (!visited[it->first] && dist[it->first] > it->second) {
+        dist[it->first] = it->second;
         min_heap.UpdateWeight(it->first, dist[it->first]);
       }
     }
