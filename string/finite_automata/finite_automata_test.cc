@@ -21,6 +21,18 @@ TEST_F(FiniteAutomataTest, ExpectPatternMatchingSuccess) {
   EXPECT_EQ(3, occur[3]);
 }
 
+TEST_F(FiniteAutomataTest, ExpectPatternMatchingOnRepeatedPatternSuccess) {
+  FiniteAutomata fa;
+  std::vector<int> occur = fa.PatternMatching("ABAB", "ABABABABABABAB");
+
+  EXPECT_EQ(0, occur[0]);
+  EXPECT_EQ(2, occur[1]);
+  EXPECT_EQ(4, occur[2]);
+  EXPECT_EQ(6, occur[3]);
+  EXPECT_EQ(8, occur[4]);
+  EXPECT_EQ(10, occur[5]);
+}
+
 TEST_F(FiniteAutomataTest, ExpectPatternMatchingPrfixAndSuffixSuccess) {
   FiniteAutomata fa;
   std::vector<int> occur = fa.PatternMatching("AB", "ABAAAB");

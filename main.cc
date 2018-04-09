@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
   testing::InitGoogleTest(&argc, argv);
-  //testing::GTEST_FLAG(filter) = "SkipListTest.ExpectDeleteElementSuccess";
+  //testing::GTEST_FLAG(filter) = "FiniteAutomataTest.ExpectPatternMatchingOnRepeatedPatternSuccess";
   return RUN_ALL_TESTS();
 }

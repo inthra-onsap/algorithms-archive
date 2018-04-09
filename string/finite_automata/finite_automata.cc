@@ -1,7 +1,7 @@
 #include "finite_automata.h"
 
-namespace algorithms_archive{
-namespace string{
+namespace algorithms_archive {
+namespace string {
 
 std::vector<int> FiniteAutomata::ProcessLps(std::string str) {
   std::vector<int> lps(str.length(), 0);
@@ -24,7 +24,7 @@ std::vector<std::vector<int>> FiniteAutomata::PreprocessStates(std::string str) 
 
   std::vector<int> lps = ProcessLps(str);
   for (int state = 0; state < num_states; ++state) {
-    for (int ch = 0; ch < 256; ++ch) {
+    for (int ch = 65; ch < 68; ++ch) {
       if (state < str.length() && ch == str[state]) {
         states[state][ch] = state + 1;
       } else {
@@ -50,7 +50,7 @@ std::vector<int> FiniteAutomata::PatternMatching(std::string pattern, std::strin
   for (int i = 0; i < text.length(); ++i) {
     curr_state = states_tbl[curr_state][text[i]];
     if (curr_state == pattern.length()) {
-      all_occurrences.push_back((i+1) - pattern.length());
+      all_occurrences.push_back(i - pattern.length() + 1);
     }
   }
 

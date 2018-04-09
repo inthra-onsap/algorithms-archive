@@ -21,6 +21,7 @@
 - [Kruskal's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/kruskal)
 - [Prim's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/prim)
 - [Ford Fulkerson & Edmonds Karp's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/ford_fulkerson)
+- [Hopcroft Karp Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/hopcroft_karp)
 
 #### Memory Management
 - [Least Recently Used (LRU)](https://github.com/inthra-onsap/algorithms-archive/tree/master/memory_management/lru_cache)
