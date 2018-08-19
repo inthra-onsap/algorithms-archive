@@ -14,7 +14,7 @@
 
 #### Graphs
 - [Topological Sort](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/topological_sort)
-- [Kosaraju's Algorithm (Strongly Connected Component)](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/strongly_connected_componenet)
+- [Kosaraju's Algorithm (Strongly Connected Component)](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/strongly_connected_component)
 - [Dijkstra's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/dijkstra)
 - [Bidirectional Dijkstra's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bidirectional_dijkstra)
 - [BellmanFord's Algorithm](https://github.com/inthra-onsap/algorithms-archive/tree/master/graphs/bellman_ford)
